@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="second_sound" uuid="64f7a5cd-26dc-4b11-8d9f-dde3dbab1727">
-      <driver-ref>postgresql</driver-ref>
+    <data-source source="LOCAL" name="SecondSound_DB" uuid="93c52859-3a6a-4629-9873-69a609d00cb0">
+      <driver-ref>mariadb</driver-ref>
       <synchronize>true</synchronize>
-      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql://192.168.2.111:5432/second_sound</jdbc-url>
+      <jdbc-driver>org.mariadb.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mariadb://192.168.2.111:3306/second_sound</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>

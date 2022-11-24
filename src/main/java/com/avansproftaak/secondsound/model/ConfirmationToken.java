@@ -8,18 +8,20 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+@Entity
+@Table(name = "confirmation_token")
 @Getter
 @Setter
 @NoArgsConstructor
-@Entity
-@Table(name = "confirmation_token")
 public class ConfirmationToken {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
-    @JoinColumn(nullable = false, name = "user_id")
+    @JoinColumn(nullable = false)
     private User user;
+
+    @Column(columnDefinition = "CHAR(36)")
     private UUID token;
     private LocalDateTime createdAt;
     private LocalDateTime expiredAt;
