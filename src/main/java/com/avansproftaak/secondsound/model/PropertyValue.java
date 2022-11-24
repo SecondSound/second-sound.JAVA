@@ -1,7 +1,11 @@
 package com.avansproftaak.secondsound.model;
 
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -20,4 +24,10 @@ public class PropertyValue {
     @ManyToOne
     @JoinColumn(nullable = false)
     private Property property;
+
+    @CreationTimestamp
+    private LocalDateTime createdAt;
+
+    @UpdateTimestamp
+    private LocalDateTime updatedAt;
 }

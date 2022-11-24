@@ -1,6 +1,8 @@
 package com.avansproftaak.secondsound.model;
 
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -32,7 +34,11 @@ public class Message {
     private User receiver;
 
     private LocalDateTime sendAt;
+
+    @CreationTimestamp
     private LocalDateTime createdAt;
+
+    @UpdateTimestamp
     private LocalDateTime updatedAt;
 
 
