@@ -3,6 +3,7 @@ package com.avansproftaak.secondsound.model;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -21,7 +22,7 @@ public class ConfirmationToken {
     @JoinColumn(nullable = false)
     private User user;
 
-    @Column(columnDefinition = "CHAR(36)")
+    @Type(type = "uuid-char")
     private UUID token;
     private LocalDateTime createdAt;
     private LocalDateTime expiredAt;
