@@ -1,6 +1,9 @@
 package com.avansproftaak.secondsound.model;
 
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -20,9 +23,11 @@ public class Advertisement {
     private String title;
     private String description;
     private BigDecimal price;
+
+    @CreationTimestamp
     private LocalDateTime createdAt;
+
+    @UpdateTimestamp
     private LocalDateTime updatedAt;
-
-
 
 }

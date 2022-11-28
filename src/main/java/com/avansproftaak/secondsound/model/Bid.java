@@ -1,6 +1,9 @@
 package com.avansproftaak.secondsound.model;
 
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -27,7 +30,10 @@ public class Bid {
     @JoinColumn(nullable = false)
     private Advertisement advertisement;
 
+    @CreationTimestamp
     private LocalDateTime createdAt;
+
+    @UpdateTimestamp
     private LocalDateTime updatedAt;
 
 
