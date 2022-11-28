@@ -9,6 +9,7 @@
 .idea/**/usage.statistics.xml
 .idea/**/dictionaries
 .idea/**/shelf
+.idea/**
 
 # AWS User-specific
 .idea/**/aws.xml
@@ -103,3 +104,7 @@ fabric.properties
 hs_err_pid*
 replay_pid*
 /src/main/resources/application.properties
+
+.idea/
+
+target/classes/application.properties
