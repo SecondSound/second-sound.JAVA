@@ -24,6 +24,10 @@ public class Advertisement {
     private String description;
     private BigDecimal price;
 
+    @ManyToOne
+    @JoinColumn(nullable = false)
+    private User user;
+
     @CreationTimestamp
     private LocalDateTime createdAt;
 
