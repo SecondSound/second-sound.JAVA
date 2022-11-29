@@ -13,10 +13,12 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import javax.servlet.FilterChain;
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.time.Instant;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -53,15 +55,23 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authentication) throws IOException {
         User user = (User) authentication.getPrincipal();
         Algorithm algorithm = Algorithm.HMAC256(JwtConfig.SECRET_KEY.getBytes());
+        Date expirationDate = new Date(System.currentTimeMillis() + JwtConfig.EXPIRATION_TIME);
+
+        String formattedExpirationDate = Instant.ofEpochMilli(expirationDate.getTime())
+                .atZone(ZoneId.systemDefault())
+                .toLocalDateTime()
+                .format(DateTimeFormatter.ISO_DATE_TIME);
+
         String accessToken = JWT.create()
                 .withSubject(user.getUsername())
-                .withExpiresAt(new Date(System.currentTimeMillis() + JwtConfig.EXPIRATION_TIME))
+                .withExpiresAt(expirationDate)
                 .withIssuer(request.getRequestURL().toString())
                 .withClaim("roles", user.getAuthorities().stream().map(GrantedAuthority::getAuthority).collect(Collectors.toList()))
                 .sign(algorithm);
 
         Map<String, String> token = new HashMap<>();
         token.put("accessToken", accessToken);
+        token.put("expirationDate", formattedExpirationDate);
         token.put("userId", user.getId().toString());
         token.put("firstName", user.getFirstName());
         token.put("lastName", user.getLastName());
