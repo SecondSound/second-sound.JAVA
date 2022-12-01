@@ -19,5 +19,5 @@ public class AdvertisementDto {
     private String title;
     private String description;
     private BigDecimal price;
-    private Long sellerId;
+    private UserDto user;
 }

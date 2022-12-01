@@ -45,6 +45,11 @@ public class AdvertisementService {
 
     public AdvertisementDto getAdvertisement(Advertisement advertisement) {
 
-        return new AdvertisementDto(advertisement.getId(), advertisement.getTitle(), advertisement.getDescription(), advertisement.getPrice(), advertisement.getUser().getId());
+        UserDto userDto = getSeller(advertisement.getUser());
+        return new AdvertisementDto(advertisement.getId(), advertisement.getTitle(), advertisement.getDescription(), advertisement.getPrice(), userDto);
+    }
+
+    public UserDto getSeller(User user) {
+        return modelMapper.map(user, UserDto.class);
     }
 }
