@@ -21,9 +21,7 @@ public class UserController {
     }
 
     @GetMapping
-    public UserDto getUser() {
-        return userService.getUser();
-    }
+    public UserDto getUser() {return userService.getUser(); }
 
     @PutMapping
     public UserDto putUser(@RequestBody User updatedUser) {
