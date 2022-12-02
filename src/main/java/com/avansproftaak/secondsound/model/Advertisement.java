@@ -34,4 +34,17 @@ public class Advertisement {
     @UpdateTimestamp
     private LocalDateTime updatedAt;
 
+    public Advertisement(String title, String description, BigDecimal price, User user) {
+        this.title = title;
+        this.description = description;
+        this.price = price;
+        this.user = user;
+    }
+
+    public Advertisement(String title, String description, BigDecimal price) {
+        this.title = title;
+        this.description = description;
+        this.price = price;
+    }
+
 }

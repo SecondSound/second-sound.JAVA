@@ -1,6 +1,6 @@
 INSERT INTO users (first_name, last_name, street, house_number, postal_code, city, country, phone_number, iban, email, password, user_role, enabled, locked, created_at)
 VALUES ('John','Doe','Veemarktstraat','12','4811ZJ','Breda','Nederland','+31618588947','NL12INGB047583365','john.doe@gmail.com','$2a$10$J1cVbLW4.wDH.oydt1R3Gupx0qb3mw885FfLNE8U5Oz2Rc.YFbmry','USER', true, false, NOW()),
-       ('Bart','Grootoonk','Stationsstraat','47','5867HH','Tilburg','Nederland','+31676893445','NL23ABNA083465899','bart.grootoonk@email.com','$2a$10$J1cVbLW4.wDH.oydt1R3Gupx0qb3mw885FfLNE8U5Oz2Rc.YFbmry','USER', true, false, NOW()),
+       ('Bart','Grootoonk','Stationsstraat','47','5867HH','Tilburg','Nederland','+31676893445','NL23ABNA083465899','bart.grootoonk@email.com','$2a$10$nIko989EJDWtb4f9jNnrdekCrLv88.rl1I.v/spnsudQSw7VY6mdy','USER', true, false, NOW()),
        ('Johan','de Visser','Zuidermarkt','7C','2298HK','Groningen','Nederland','+31623354789','NL12INGB014365578','johandevisser@live.nl','$2a$10$J1cVbLW4.wDH.oydt1R3Gupx0qb3mw885FfLNE8U5Oz2Rc.YFbmry','USER', true, false, NOW()),
        ('Berend','Wolfstra','Beverweg','156','8766UO','Breda','Nederland','+31615477998','NL63RABO043667890','berendwolfstra@yahoo.com','$2a$10$J1cVbLW4.wDH.oydt1R3Gupx0qb3mw885FfLNE8U5Oz2Rc.YFbmry','USER', true, false, NOW()),
        ('Kees','van Dongen','Parelsebaan','2','2857TY','Eindhoven','Nederland','+31665877034','NL12INGB031224567','kees.vandongen@hetnet.nl','$2a$10$J1cVbLW4.wDH.oydt1R3Gupx0qb3mw885FfLNE8U5Oz2Rc.YFbmry','USER', true, false, NOW()),
@@ -8,7 +8,7 @@ VALUES ('John','Doe','Veemarktstraat','12','4811ZJ','Breda','Nederland','+316185
        ('Sofia','Bulgara','Torenstraat','18','4758UY','Amsterdam','Nederland','+31618675075','NL63RABO027586957','sofiabulgara@hotmail.com','$2a$10$J1cVbLW4.wDH.oydt1R3Gupx0qb3mw885FfLNE8U5Oz2Rc.YFbmry','USER', true, false, NOW()),
        ('Ronald','Peyger','Dubbelsebaan','23','9273SO','Maastricht','Nederland','+31639687961','NL12INGB011334657','ronaldpeyger@gmail.com','$2a$10$J1cVbLW4.wDH.oydt1R3Gupx0qb3mw885FfLNE8U5Oz2Rc.YFbmry','USER', true, false, NOW()),
        ('Ruud','Klozel','John F. Kennedylaan','112','3968GJ','Tilburg','Nederland','+31618477689','NL23ABNA047565767','ruudklozel@gmail.com','$2a$10$J1cVbLW4.wDH.oydt1R3Gupx0qb3mw885FfLNE8U5Oz2Rc.YFbmry','USER', true, false, NOW()),
-       ('Bas','de Ruyter','Ginnekenweg','34','4812BK','Breda','Nederland','+31634355789','NL12INGB044879685','basderuyter@gmail.com','$2a$10$J1cVbLW4.wDH.oydt1R3Gupx0qb3mw885FfLNE8U5Oz2Rc.YFbmry','USER', true, false, NOW());
+       ('Bas','de Ruyter','Ginnekenweg','34','4812BK','Breda','Nederland','+31634355789','NL12INGB044879685','basderuyter@gmail.com','$2a$10$nIko989EJDWtb4f9jNnrdekCrLv88.rl1I.v/spnsudQSw7VY6mdy','USER', true, false, NOW());
 
 
 INSERT INTO confirmation_token (confirmed_at, created_at, expired_at, token, user_id)
@@ -22,3 +22,10 @@ VALUES (NOW(), NOW(), NOW() + INTERVAL 1 HOUR, '88bf0629-45d3-4897-be7c-062bdf21
        (NOW(), NOW(), NOW() + INTERVAL 1 HOUR, 'f369ec15-cd7b-4a12-bfbf-1e95a30816c4', 8),
        (NOW(), NOW(), NOW() + INTERVAL 1 HOUR, '45fbba19-2e0d-4c65-9b51-97266e83f98a', 9),
        (NOW(), NOW(), NOW() + INTERVAL 1 HOUR, '05bf9bf1-9580-4480-ae6f-b2bc490cdc79', 10);
+
+INSERT INTO advertisement (created_at, description, price, title, user_id)
+VALUES (NOW(), "3/4 Gitaar, met gitaartas-rugtas. Gitaar geeft een warm geluid", 1100, "Godin Multiac Nylon SA", 1),
+       (NOW(), "Prima keyboard. Inclusief lesboek.", 25, "General Music Cd1 Hyper Keyboard", 3),
+       (NOW(), "Professioneel alt-martijn saxofoonmodel handgemaakt, handgemaakt uit 1926, met de hand gegraveerd, individueel gelaste toongaten, opnieuw gepolijst met prestini merkpad in 2022, veren vervangen, werkend. Het wordt verzonden met een mordiba reistas, met koerier en verzekering.", 1200, "Saxophone alto handcraft", 2),
+       (NOW(), "Nu van € 525,00 voor € 399,00. Gratis thuis. Volledige fabrieksgarantie. Afgesteld geleverd. Uiteraard kunt u hem testen in onze showroom van 2000m2. Met 14 dagen niet goed geld terug garantie!", 399, "Basgitaar Sterling Sub Ray 4 black en Ray24 Butterscotch", 7),
+       (NOW(), "De legendarische SM58® (zonder schakelaar) is een branchestandaard, zeer veelzijdige, cardioïde, dynamische zangmicrofoon die speciaal gemaakt is voor een warme en heldere vocale weergave. De SM58® is steevast de eerste keuze voor zang optredens in de hele wereld.", 109, "Shure | SM58 | microfoon", 9);
