@@ -36,7 +36,8 @@ public class AdvertisementService {
     public AdvertisementDto addAdvertisement(Advertisement advertisement) {
 
         User user = userService.getAuthenticatedUser();
-
+        System.out.println(user.getLastName());
+        System.out.println(advertisement.getPrice());
         Advertisement newAdvertisement = new Advertisement(advertisement.getTitle(), advertisement.getDescription(), advertisement.getPrice(), user);
         advertisementRepository.save(newAdvertisement);
 

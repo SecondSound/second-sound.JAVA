@@ -1,17 +1,13 @@
 package com.avansproftaak.secondsound.controller;
 
 import com.avansproftaak.secondsound.dto.AdvertisementDto;
-import com.avansproftaak.secondsound.dto.RegistrationDto;
-import com.avansproftaak.secondsound.dto.UserDto;
 import com.avansproftaak.secondsound.model.Advertisement;
-import com.avansproftaak.secondsound.model.User;
 import com.avansproftaak.secondsound.service.AdvertisementService;
 import com.avansproftaak.secondsound.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.UUID;
 
 
 @RestController
@@ -34,7 +30,7 @@ public class AdvertisementController {
 
     @PostMapping(path = "advertisement")
     public AdvertisementDto AddAdvertisement(@RequestBody Advertisement advertisement) {
-
+        System.out.println("test");
         return advertisementService.addAdvertisement(advertisement);
     }
 
