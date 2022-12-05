@@ -30,6 +30,10 @@ public class ResourceService {
         this.resourceRepository = resourceRepository;
     }
 
+    public void imageString(String imageString) {
+
+    }
+
     public String uploadImage(MultipartFile file) throws IOException {
         if (file.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Please select a file to upload.");

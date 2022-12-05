@@ -12,8 +12,11 @@ import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -23,21 +26,34 @@ import java.util.UUID;
 public class AdvertisementService {
 
     private final AdvertisementRepository advertisementRepository;
-    private final ResourceRepository resourceRepository;
-    private final UserRepository userRepository;
     private final UserService userService;
+    private final ResourceRepository resourceRepository;
     private final ModelMapper modelMapper;
 
-    public List<Advertisement> getAllAdvertisements() {
-        return advertisementRepository.findAll();
+    public List<AdvertisementDto> getAllAdvertisements() {
+
+        var adList = advertisementRepository.findAll();
+        ArrayList<AdvertisementDto> adListDto = new ArrayList<>();
+
+        for (Advertisement advertisement : adList) {
+            var advertisementDto = new AdvertisementDto(
+                    advertisement.getId(),
+            advertisement.getTitle(),
+            advertisement.getDescription(),
+            advertisement.getPrice(),
+            resourceRepository.findImagesByAdvertisementId(advertisement.getId()),
+            advertisement.getUser().getId());
+
+            adListDto.add(advertisementDto);
+        }
+
+        return adListDto;
 
     }
 
-    public AdvertisementDto addAdvertisement(Advertisement advertisement) {
+    public AdvertisementDto addAdvertisement(AdvertisementDto advertisement) {
 
         User user = userService.getAuthenticatedUser();
-        System.out.println(user.getLastName());
-        System.out.println(advertisement.getPrice());
         Advertisement newAdvertisement = new Advertisement(advertisement.getTitle(), advertisement.getDescription(), advertisement.getPrice(), user);
         advertisementRepository.save(newAdvertisement);
 
@@ -47,10 +63,17 @@ public class AdvertisementService {
     public AdvertisementDto getAdvertisement(Advertisement advertisement) {
 
         UserDto userDto = getSeller(advertisement.getUser());
-        return new AdvertisementDto(advertisement.getId(), advertisement.getTitle(), advertisement.getDescription(), advertisement.getPrice(), userDto);
+        return new AdvertisementDto(
+                advertisement.getId(),
+                advertisement.getTitle(),
+                advertisement.getDescription(),
+                advertisement.getPrice(),
+                resourceRepository.findImagesByAdvertisementId(advertisement.getId()),
+                advertisement.getUser().getId());
     }
 
     public UserDto getSeller(User user) {
         return modelMapper.map(user, UserDto.class);
     }
+
 }

@@ -2,15 +2,14 @@ package com.avansproftaak.secondsound.dto;
 
 import com.avansproftaak.secondsound.model.User;
 import com.avansproftaak.secondsound.service.UserService;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.ToString;
+import lombok.*;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Getter
 @AllArgsConstructor
+@NoArgsConstructor
 @EqualsAndHashCode
 @ToString
 public class AdvertisementDto {
@@ -19,5 +18,6 @@ public class AdvertisementDto {
     private String title;
     private String description;
     private BigDecimal price;
-    private UserDto user;
+    private String imgFile;
+    private Long user;
 }

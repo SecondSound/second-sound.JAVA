@@ -1,12 +1,15 @@
 package com.avansproftaak.secondsound.controller;
 
 import com.avansproftaak.secondsound.dto.AdvertisementDto;
+import com.avansproftaak.secondsound.dto.UserDto;
 import com.avansproftaak.secondsound.model.Advertisement;
 import com.avansproftaak.secondsound.service.AdvertisementService;
 import com.avansproftaak.secondsound.service.UserService;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -15,23 +18,21 @@ import java.util.List;
 public class AdvertisementController {
 
     private final AdvertisementService advertisementService;
-    private final UserService userService;
 
     @Autowired
-    public AdvertisementController(AdvertisementService advertisementService, UserService userService) {
+    public AdvertisementController(AdvertisementService advertisementService) {
         this.advertisementService = advertisementService;
-        this.userService = userService;
     }
 
     @GetMapping(path="public/advertisement")
-    public List<Advertisement> getAllAdvertisements() {
-        return advertisementService.getAllAdvertisements();
+    public List<AdvertisementDto> getAllAdvertisements() {
+        var x = advertisementService.getAllAdvertisements();
+        return x;
     }
 
     @PostMapping(path = "advertisement")
-    public AdvertisementDto AddAdvertisement(@RequestBody Advertisement advertisement) {
-        System.out.println("test");
-        return advertisementService.addAdvertisement(advertisement);
+    public AdvertisementDto AddAdvertisement(@RequestBody AdvertisementDto advertisementDto) {
+        return advertisementService.addAdvertisement(advertisementDto);
     }
 
 }

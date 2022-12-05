@@ -24,8 +24,15 @@ VALUES (NOW(), NOW(), NOW() + INTERVAL 1 HOUR, '88bf0629-45d3-4897-be7c-062bdf21
        (NOW(), NOW(), NOW() + INTERVAL 1 HOUR, '05bf9bf1-9580-4480-ae6f-b2bc490cdc79', 10);
 
 INSERT INTO advertisement (created_at, description, price, title, user_id)
-VALUES (NOW(), "3/4 Gitaar, met gitaartas-rugtas. Gitaar geeft een warm geluid", 1100, "Godin Multiac Nylon SA", 1),
-       (NOW(), "Prima keyboard. Inclusief lesboek.", 25, "General Music Cd1 Hyper Keyboard", 3),
-       (NOW(), "Professioneel alt-martijn saxofoonmodel handgemaakt, handgemaakt uit 1926, met de hand gegraveerd, individueel gelaste toongaten, opnieuw gepolijst met prestini merkpad in 2022, veren vervangen, werkend. Het wordt verzonden met een mordiba reistas, met koerier en verzekering.", 1200, "Saxophone alto handcraft", 2),
-       (NOW(), "Nu van € 525,00 voor € 399,00. Gratis thuis. Volledige fabrieksgarantie. Afgesteld geleverd. Uiteraard kunt u hem testen in onze showroom van 2000m2. Met 14 dagen niet goed geld terug garantie!", 399, "Basgitaar Sterling Sub Ray 4 black en Ray24 Butterscotch", 7),
-       (NOW(), "De legendarische SM58® (zonder schakelaar) is een branchestandaard, zeer veelzijdige, cardioïde, dynamische zangmicrofoon die speciaal gemaakt is voor een warme en heldere vocale weergave. De SM58® is steevast de eerste keuze voor zang optredens in de hele wereld.", 109, "Shure | SM58 | microfoon", 9);
+VALUES (NOW(), '3/4 Gitaar, met gitaartas-rugtas. Gitaar geeft een warm geluid', 1100, 'Godin Multiac Nylon SA', 1),
+       (NOW(), 'Prima keyboard. Inclusief lesboek.', 25, 'General Music Cd1 Hyper Keyboard', 3),
+       (NOW(), 'Professioneel alt-martijn saxofoonmodel handgemaakt, handgemaakt uit 1926, met de hand gegraveerd, individueel gelaste toongaten, opnieuw gepolijst met prestini merkpad in 2022, veren vervangen, werkend. Het wordt verzonden met een mordiba reistas, met koerier en verzekering.', 1200, 'Saxophone alto handcraft', 2),
+       (NOW(), 'Nu van € 525,00 voor € 399,00. Gratis thuis. Volledige fabrieksgarantie. Afgesteld geleverd. Uiteraard kunt u hem testen in onze showroom van 2000m2. Met 14 dagen niet goed geld terug garantie!', 399, 'Basgitaar Sterling Sub Ray 4 black en Ray24 Butterscotch', 7),
+       (NOW(), 'De legendarische SM58® (zonder schakelaar) is een branchestandaard, zeer veelzijdige, cardioïde, dynamische zangmicrofoon die speciaal gemaakt is voor een warme en heldere vocale weergave. De SM58® is steevast de eerste keuze voor zang optredens in de hele wereld.', 109, 'Shure | SM58 | microfoon', 9);
+
+INSERT INTO resource (created_at, file_path, advertisement_id)
+VALUES (NOW(), 'https://cdn.webshopapp.com/shops/179375/files/349741130/je-akoestische-gitaar-versterken-en-opnemen.jpg', 1),
+       (NOW(), 'https://www.omarimc.com/wp-content/uploads/2018/01/keyboard-2822917_1920.jpg', 2),
+       (NOW(), 'https://basensax.nl/images/virtuemart/product/p1050082-1589602842.jpg', 3),
+       (NOW(), 'https://i.pinimg.com/originals/fe/56/f0/fe56f0cb02a22f2a4b9813f163066d5d.jpg', 4),
+       (NOW(), 'https://medias.audiofanzine.com/images/normal/shure-sm58-876627.jpg', 5);
