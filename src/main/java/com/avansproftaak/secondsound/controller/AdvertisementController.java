@@ -1,13 +1,16 @@
 package com.avansproftaak.secondsound.controller;
 
+import com.avansproftaak.secondsound.dto.AdvertisementData;
 import com.avansproftaak.secondsound.dto.AdvertisementDto;
 import com.avansproftaak.secondsound.dto.UserDto;
 import com.avansproftaak.secondsound.model.Advertisement;
 import com.avansproftaak.secondsound.service.AdvertisementService;
 import com.avansproftaak.secondsound.service.UserService;
+import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,8 +34,12 @@ public class AdvertisementController {
     }
 
     @PostMapping(path = "advertisement")
-    public AdvertisementDto AddAdvertisement(@RequestBody AdvertisementDto advertisementDto) {
-        return advertisementService.addAdvertisement(advertisementDto);
+    public AdvertisementDto AddAdvertisement(@RequestBody AdvertisementData advertisementData, @RequestParam("file") MultipartFile file) {
+
+        System.out.println(advertisementData);
+        System.out.println(file);
+        return null;
+//        return advertisementService.addAdvertisement(advertisementData);
     }
 
 }

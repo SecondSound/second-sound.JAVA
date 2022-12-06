@@ -1,6 +1,7 @@
 package com.avansproftaak.secondsound.service;
 
 import com.avansproftaak.secondsound.controller.UserController;
+import com.avansproftaak.secondsound.dto.AdvertisementData;
 import com.avansproftaak.secondsound.dto.AdvertisementDto;
 import com.avansproftaak.secondsound.dto.UserDto;
 import com.avansproftaak.secondsound.model.Advertisement;
@@ -51,7 +52,7 @@ public class AdvertisementService {
 
     }
 
-    public AdvertisementDto addAdvertisement(AdvertisementDto advertisement) {
+    public AdvertisementDto addAdvertisement(AdvertisementData advertisement) {
 
         User user = userService.getAuthenticatedUser();
         Advertisement newAdvertisement = new Advertisement(advertisement.getTitle(), advertisement.getDescription(), advertisement.getPrice(), user);
