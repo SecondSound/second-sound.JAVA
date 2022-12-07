@@ -63,7 +63,15 @@ public class ResourceService {
             throw new ResponseStatusException(HttpStatus.FORBIDDEN,
                     "User has no permission to upload images for this advertisement");
         }
-        String imageUrl = uploadImage(file);
+
+        String imageUrl;
+
+        if (file == null) {
+            imageUrl = "https://rejse-glæde.dk/wp-content/themes/klikko3_b_2022_08_05/dest/images/no-image.webp";
+        } else {
+            imageUrl = uploadImage(file);
+        }
+
         Resource resource = new Resource();
         resource.setFilePath(imageUrl);
         resource.setAdvertisement(advertisement);

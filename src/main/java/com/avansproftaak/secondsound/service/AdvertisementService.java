@@ -9,6 +9,7 @@ import com.avansproftaak.secondsound.model.User;
 import com.avansproftaak.secondsound.repository.AdvertisementRepository;
 import com.avansproftaak.secondsound.repository.ResourceRepository;
 import com.avansproftaak.secondsound.repository.UserRepository;
+import com.fasterxml.jackson.core.io.BigDecimalParser;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
@@ -17,10 +18,9 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
+import java.text.NumberFormat;
+import java.text.ParseException;
+import java.util.*;
 
 @Service
 @AllArgsConstructor
@@ -47,30 +47,31 @@ public class AdvertisementService {
 
             adListDto.add(advertisementDto);
         }
-
         return adListDto;
 
     }
 
-    public AdvertisementDto addAdvertisement(AdvertisementData advertisement) {
+    public AdvertisementDto addAdvertisement(AdvertisementData advertisement) throws ParseException {
 
+
+
+        var currencyPrice = BigDecimalParser.parse(advertisement.getPrice());
         User user = userService.getAuthenticatedUser();
-        Advertisement newAdvertisement = new Advertisement(advertisement.getTitle(), advertisement.getDescription(), advertisement.getPrice(), user);
+        Advertisement newAdvertisement = new Advertisement(advertisement.getTitle(), advertisement.getDescription(), currencyPrice, user);
         advertisementRepository.save(newAdvertisement);
-
         return getAdvertisement(newAdvertisement);
     }
 
     public AdvertisementDto getAdvertisement(Advertisement advertisement) {
 
-        UserDto userDto = getSeller(advertisement.getUser());
         return new AdvertisementDto(
-                advertisement.getId(),
-                advertisement.getTitle(),
-                advertisement.getDescription(),
-                advertisement.getPrice(),
-                resourceRepository.findImagesByAdvertisementId(advertisement.getId()),
-                advertisement.getUser().getId());
+            advertisement.getId(),
+            advertisement.getTitle(),
+            advertisement.getDescription(),
+            advertisement.getPrice(),
+            resourceRepository.findImagesByAdvertisementId(advertisement.getId()),
+            advertisement.getUser().getId()
+        );
     }
 
     public UserDto getSeller(User user) {

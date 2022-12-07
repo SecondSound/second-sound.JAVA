@@ -5,6 +5,7 @@ import com.avansproftaak.secondsound.service.ResourceService;
 import com.avansproftaak.secondsound.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.lang.Nullable;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -26,8 +27,9 @@ public class ResourceController {
     @PostMapping("/advertisement/{id}")
     public ResponseEntity<String> uploadAdvertisementResource(
             @PathVariable("id") Long id,
-            @RequestParam("file") MultipartFile file
+            @RequestParam("file") @Nullable MultipartFile file
     ) throws IOException {
+
         User user = userService.getAuthenticatedUser();
         return resourceService.uploadAdvertisementImage(id, file, user);
     }

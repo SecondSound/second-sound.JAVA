@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,17 +30,12 @@ public class AdvertisementController {
 
     @GetMapping(path="public/advertisement")
     public List<AdvertisementDto> getAllAdvertisements() {
-        var x = advertisementService.getAllAdvertisements();
-        return x;
+        return advertisementService.getAllAdvertisements();
     }
 
     @PostMapping(path = "advertisement")
-    public AdvertisementDto AddAdvertisement(@RequestBody AdvertisementData advertisementData, @RequestParam("file") MultipartFile file) {
-
-        System.out.println(advertisementData);
-        System.out.println(file);
-        return null;
-//        return advertisementService.addAdvertisement(advertisementData);
+    public AdvertisementDto AddAdvertisement(@RequestBody AdvertisementData advertisementData) throws ParseException {
+        return advertisementService.addAdvertisement(advertisementData);
     }
 
 }

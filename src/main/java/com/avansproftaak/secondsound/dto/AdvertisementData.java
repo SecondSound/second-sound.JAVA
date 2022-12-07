@@ -14,6 +14,6 @@ public class AdvertisementData {
 
     private String title;
     private String description;
-    private BigDecimal price;
-    private MultipartFile file;
+    private String price;
+    private String file;
 }
