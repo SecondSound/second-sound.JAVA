@@ -1,6 +1,9 @@
 package com.avansproftaak.secondsound.service;
 
 import com.avansproftaak.secondsound.dto.RegistrationDto;
+import com.avansproftaak.secondsound.dto.ResponseDto;
+import com.avansproftaak.secondsound.dto.TokenDto;
+import com.avansproftaak.secondsound.dto.UserDto;
 import com.avansproftaak.secondsound.enums.UserRole;
 import com.avansproftaak.secondsound.model.ConfirmationToken;
 import com.avansproftaak.secondsound.model.User;
@@ -8,7 +11,9 @@ import com.avansproftaak.secondsound.util.EmailSender;
 import com.avansproftaak.secondsound.validation.EmailValidator;
 import com.avansproftaak.secondsound.validation.PasswordValidator;
 import lombok.AllArgsConstructor;
+import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
@@ -25,8 +30,9 @@ public class RegistrationService {
     private final PasswordValidator passwordValidator;
     private final ConfirmationTokenService confirmationTokenService;
     private final EmailSender emailSender;
+    private final ModelMapper modelMapper;
 
-    public UUID register(RegistrationDto request) {
+    public TokenDto register(RegistrationDto request) {
         String email = request.getEmail();
         boolean isValidEmail = emailValidator.test(email);
         boolean isValidPassword = passwordValidator.test(request.getPassword());
@@ -48,14 +54,17 @@ public class RegistrationService {
                 UserRole.USER
         ));
 
-        String link = "http://localhost:8080/api/v1.0/auth/register/confirm/?token=" + token;
+        TokenDto tokenDto = new TokenDto();
+        tokenDto.setToken(token);
+
+        String link = "http://localhost:4200/register/confirm?token=" + token;
         emailSender.send(request.getEmail(), buildEmail(request.getFirstName(), link, token.toString()));
 
-        return token;
+        return tokenDto;
     }
 
     @Transactional
-    public String confirmToken(UUID token) {
+    public ResponseDto confirmToken(UUID token) {
         ConfirmationToken confirmationToken = confirmationTokenService.getToken(token).orElseThrow(() ->
                 new ResponseStatusException(HttpStatus.NOT_FOUND, "Confirmation token " + token + " cannot be found."));
 
@@ -71,7 +80,10 @@ public class RegistrationService {
 
         confirmationTokenService.setConfirmedAt(token);
         userService.enableUser(confirmationToken.getUser().getEmail());
-        return "Your account has been confirmed.";
+
+        ResponseDto response = new ResponseDto();
+        response.setMessage("Your account has been confirmed.");
+        return response;
     }
 
     private String buildEmail(String name, String link, String token) {
