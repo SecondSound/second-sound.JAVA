@@ -1,8 +1,11 @@
 package com.avansproftaak.secondsound.service;
+import com.avansproftaak.secondsound.dto.AdvertisementDto;
+import com.avansproftaak.secondsound.dto.SellerDto;
 import com.avansproftaak.secondsound.dto.UserDto;
+import com.avansproftaak.secondsound.model.Advertisement;
 import com.avansproftaak.secondsound.model.ConfirmationToken;
 import com.avansproftaak.secondsound.model.User;
-import com.avansproftaak.secondsound.repository.UserRepository;
+import com.avansproftaak.secondsound.repository.*;
 import com.avansproftaak.secondsound.validation.EmailValidator;
 import com.avansproftaak.secondsound.validation.UserValidator;
 import lombok.AllArgsConstructor;
@@ -16,6 +19,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -23,6 +28,9 @@ import java.util.UUID;
 public class UserService implements UserDetailsService {
 
     private final UserRepository userRepository;
+    private final ResourceRepository resourceRepository;
+    private final AdvertisementRepository advertisementRepository;
+    private final SubCategoryRepository subCategoryRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
     private final ConfirmationTokenService confirmationTokenService;
     private final ModelMapper modelMapper;
@@ -110,10 +118,44 @@ public class UserService implements UserDetailsService {
         user.setEmail(email);
         user.setPostalCode(postalCode);
 
-        return  modelMapper.map(userRepository.save(user), UserDto.class);
+        return modelMapper.map(userRepository.save(user), UserDto.class);
     }
 
     public UserDto getUser() {
         return modelMapper.map(getAuthenticatedUser(), UserDto.class);
+    }
+
+    public SellerDto getSeller(Long sellerId) {
+
+        var user = userRepository.findById(sellerId)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User unknown"));
+        boolean isActive = true;
+        var activeAdvertisements = advertisementRepository.findAllBySellerId(sellerId, isActive);
+        ArrayList<AdvertisementDto> activeAdvertisementDtoList = new ArrayList<>();
+
+        for (Advertisement advertisement : activeAdvertisements) {
+
+            var subcategory = subCategoryRepository.findById(advertisement.getId())
+                    .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Subcategory unknown"));
+
+            var advertisementDto = new AdvertisementDto(
+                    advertisement.getId(),
+                    advertisement.getTitle(),
+                    advertisement.getDescription(),
+                    advertisement.getPrice(),
+                    resourceRepository.findImagesByAdvertisementId(advertisement.getId()),
+                    subcategory);
+
+            activeAdvertisementDtoList.add(advertisementDto);
+        }
+
+        return new SellerDto(
+                user.getId(),
+                user.getFirstName(),
+                user.getLastName(),
+                user.getCity(),
+                user.getPhoneNumber(),
+                user.getEmail(),
+                activeAdvertisementDtoList);
     }
 }
