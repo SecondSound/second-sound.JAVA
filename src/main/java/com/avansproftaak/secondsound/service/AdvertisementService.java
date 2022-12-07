@@ -5,13 +5,13 @@ import com.avansproftaak.secondsound.dto.AdvertisementData;
 import com.avansproftaak.secondsound.dto.AdvertisementDto;
 import com.avansproftaak.secondsound.dto.UserDto;
 import com.avansproftaak.secondsound.model.Advertisement;
+import com.avansproftaak.secondsound.model.SubCategory;
 import com.avansproftaak.secondsound.model.User;
-import com.avansproftaak.secondsound.repository.AdvertisementRepository;
-import com.avansproftaak.secondsound.repository.ResourceRepository;
-import com.avansproftaak.secondsound.repository.UserRepository;
+import com.avansproftaak.secondsound.repository.*;
 import com.fasterxml.jackson.core.io.BigDecimalParser;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -26,9 +26,11 @@ import java.util.*;
 @AllArgsConstructor
 public class AdvertisementService {
 
-    private final AdvertisementRepository advertisementRepository;
+
     private final UserService userService;
+    private final AdvertisementRepository advertisementRepository;
     private final ResourceRepository resourceRepository;
+    private final SubCategoryRepository subCategoryRepository;
     private final ModelMapper modelMapper;
 
     public List<AdvertisementDto> getAllAdvertisements() {
@@ -37,13 +39,19 @@ public class AdvertisementService {
         ArrayList<AdvertisementDto> adListDto = new ArrayList<>();
 
         for (Advertisement advertisement : adList) {
+
+            var subcategory = subCategoryRepository.findById(advertisement.getId())
+                    .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Subcategory unknown"));
+            var seller = userService.getSeller(advertisement.getUser().getId());
+
             var advertisementDto = new AdvertisementDto(
                     advertisement.getId(),
-            advertisement.getTitle(),
-            advertisement.getDescription(),
-            advertisement.getPrice(),
-            resourceRepository.findImagesByAdvertisementId(advertisement.getId()),
-            advertisement.getUser().getId());
+                    advertisement.getTitle(),
+                    advertisement.getDescription(),
+                    advertisement.getPrice(),
+                    resourceRepository.findImagesByAdvertisementId(advertisement.getId()),
+                    subcategory,
+                    seller);
 
             adListDto.add(advertisementDto);
         }
@@ -51,27 +59,33 @@ public class AdvertisementService {
 
     }
 
-    public AdvertisementDto addAdvertisement(AdvertisementData advertisement) throws ParseException {
-
-
+    public AdvertisementDto addAdvertisement(AdvertisementData advertisement) {
 
         var currencyPrice = BigDecimalParser.parse(advertisement.getPrice());
         User user = userService.getAuthenticatedUser();
-        Advertisement newAdvertisement = new Advertisement(advertisement.getTitle(), advertisement.getDescription(), currencyPrice, user);
+        SubCategory subCategory = subCategoryRepository.findById(advertisement.getSubCategoryId().longValue())
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Subcategory unknown"));
+
+        Advertisement newAdvertisement = new Advertisement(advertisement.getTitle(), advertisement.getDescription(), currencyPrice, subCategory, user, advertisement.isActive());
+
         advertisementRepository.save(newAdvertisement);
         return getAdvertisement(newAdvertisement);
     }
 
     public AdvertisementDto getAdvertisement(Advertisement advertisement) {
 
+        var subcategory = subCategoryRepository.findById(advertisement.getId())
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "SubCategory unknown"));
+        var seller = userService.getSeller(advertisement.getUser().getId());
+
         return new AdvertisementDto(
-            advertisement.getId(),
-            advertisement.getTitle(),
-            advertisement.getDescription(),
-            advertisement.getPrice(),
-            resourceRepository.findImagesByAdvertisementId(advertisement.getId()),
-            advertisement.getUser().getId()
-        );
+                advertisement.getId(),
+                advertisement.getTitle(),
+                advertisement.getDescription(),
+                advertisement.getPrice(),
+                resourceRepository.findImagesByAdvertisementId(advertisement.getId()),
+                subcategory,
+                seller);
     }
 
     public UserDto getSeller(User user) {

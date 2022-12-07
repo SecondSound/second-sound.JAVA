@@ -38,11 +38,15 @@ public class Advertisement {
     @UpdateTimestamp
     private LocalDateTime updatedAt;
 
-    public Advertisement(String title, String description, BigDecimal price, User user) {
+    boolean isActive = false;
+
+    public Advertisement(String title, String description, BigDecimal price, SubCategory subCategory, User user, boolean isActive) {
         this.title = title;
         this.description = description;
         this.price = price;
         this.user = user;
+        this.subCategory = subCategory;
+        this.isActive = isActive;
     }
 
     public Advertisement(String title, String description, BigDecimal price) {

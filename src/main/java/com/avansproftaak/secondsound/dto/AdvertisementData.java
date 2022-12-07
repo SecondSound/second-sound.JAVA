@@ -15,5 +15,6 @@ public class AdvertisementData {
     private String title;
     private String description;
     private String price;
-    private String file;
+    private Integer subCategoryId;
+    private boolean isActive;
 }

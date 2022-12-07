@@ -96,12 +96,12 @@ VALUES (NOW(), NOW(), NOW() + INTERVAL 1 HOUR, '88bf0629-45d3-4897-be7c-062bdf21
        (NOW(), NOW(), NOW() + INTERVAL 1 HOUR, '45fbba19-2e0d-4c65-9b51-97266e83f98a', 9),
        (NOW(), NOW(), NOW() + INTERVAL 1 HOUR, '05bf9bf1-9580-4480-ae6f-b2bc490cdc79', 10);
 
-INSERT INTO advertisement (created_at, description, price, title, user_id, sub_category_id)
-VALUES (NOW(), '3/4 Guitar, with guitar bag backpack. Guitar gives a warm sound', 1100, 'Godin Multiac Nylon SA', 1, 44),
-       (NOW(), 'Great keyboard. Including textbook.', 25, 'General Music Cd1 Hyper Keyboard', 3, 39),
-       (NOW(), 'Professional alt-martijn saxophone model handmade, handmade from 1926, hand engraved, individually welded tone holes, re-polished with prestini brand pad in 2022, feathers replaced, working. It is shipped with a mordiba travel bag, with courier and insurance.', 1200, 'Saxophone alto handcraft', 2, 20),
-       (NOW(), 'Now from € 525,00 for € 399,00. Free at home. Full manufacturers warranty. Delivered adjusted. Of course you can test it in our showroom of 2000m2. With 14 day money back guarantee!', 399, 'Basgitaar Sterling Sub Ray 4 black and Ray24 Butterscotch', 7, 45),
-       (NOW(), 'The legendary SM58® (without switch) is an industry-standard, highly versatile, cardioid, dynamic vocal microphone specially made for a warm and clear vocal reproduction. The SM58® is invariably the first choice for singing performances around the world.', 109, 'Shure | SM58 | microfoon', 9, 7);
+INSERT INTO advertisement (created_at, description, price, title, user_id, sub_category_id, is_active)
+VALUES (NOW(), '3/4 Guitar, with guitar bag backpack. Guitar gives a warm sound', 1100, 'Godin Multiac Nylon SA', 1, 44, true),
+       (NOW(), 'Great keyboard. Including textbook.', 25, 'General Music Cd1 Hyper Keyboard', 3, 39, true),
+       (NOW(), 'Professional alt-martijn saxophone model handmade, handmade from 1926, hand engraved, individually welded tone holes, re-polished with prestini brand pad in 2022, feathers replaced, working. It is shipped with a mordiba travel bag, with courier and insurance.', 1200, 'Saxophone alto handcraft', 2, 20, true),
+       (NOW(), 'Now from € 525,00 for € 399,00. Free at home. Full manufacturers warranty. Delivered adjusted. Of course you can test it in our showroom of 2000m2. With 14 day money back guarantee!', 399, 'Basgitaar Sterling Sub Ray 4 black and Ray24 Butterscotch', 7, 45, true),
+       (NOW(), 'The legendary SM58® (without switch) is an industry-standard, highly versatile, cardioid, dynamic vocal microphone specially made for a warm and clear vocal reproduction. The SM58® is invariably the first choice for singing performances around the world.', 109, 'Shure | SM58 | microfoon', 9, 7, true);
 
 INSERT INTO resource (created_at, file_path, advertisement_id)
 VALUES (NOW(), 'https://cdn.webshopapp.com/shops/179375/files/349741130/je-akoestische-gitaar-versterken-en-opnemen.jpg', 1),
