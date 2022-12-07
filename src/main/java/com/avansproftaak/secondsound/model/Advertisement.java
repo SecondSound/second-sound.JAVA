@@ -28,6 +28,10 @@ public class Advertisement {
     @JoinColumn(nullable = false)
     private User user;
 
+    @ManyToOne
+    @JoinColumn(nullable = false)
+    private SubCategory subCategory;
+
     @CreationTimestamp
     private LocalDateTime createdAt;
 
