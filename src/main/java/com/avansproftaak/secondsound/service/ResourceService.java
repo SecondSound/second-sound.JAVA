@@ -77,6 +77,6 @@ public class ResourceService {
         resource.setAdvertisement(advertisement);
         resourceRepository.save(resource);
 
-        return new ResponseEntity<>("File successfully uploaded", HttpStatus.CREATED);
+        return new ResponseEntity<>("File successfully uploaded", HttpStatus.OK);
     }
 }
