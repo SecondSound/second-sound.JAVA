@@ -40,7 +40,7 @@ public class AdvertisementService {
 
         for (Advertisement advertisement : adList) {
 
-            var subcategory = subCategoryRepository.findById(advertisement.getId())
+            var subcategory = subCategoryRepository.findById(advertisement.getSubCategory().getId())
                     .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Subcategory unknown"));
             var seller = userService.getSeller(advertisement.getUser().getId());
 
@@ -74,7 +74,7 @@ public class AdvertisementService {
 
     public AdvertisementDto getAdvertisement(Advertisement advertisement) {
 
-        var subcategory = subCategoryRepository.findById(advertisement.getId())
+        var subcategory = subCategoryRepository.findById(advertisement.getSubCategory().getId())
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "SubCategory unknown"));
         var seller = userService.getSeller(advertisement.getUser().getId());
 
