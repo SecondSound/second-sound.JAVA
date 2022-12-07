@@ -135,7 +135,7 @@ public class UserService implements UserDetailsService {
 
         for (Advertisement advertisement : activeAdvertisements) {
 
-            var subcategory = subCategoryRepository.findById(advertisement.getId())
+            var subcategory = subCategoryRepository.findById(advertisement.getSubCategory().getId())
                     .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Subcategory unknown"));
 
             var advertisementDto = new AdvertisementDto(
