@@ -1,3 +1,76 @@
+INSERT INTO category (name, created_at)
+VALUES ('Equipment and Electronics', NOW()),
+       ('Wind instruments', NOW()),
+       ('Services and Professionals', NOW()),
+       ('Drums and Percussion', NOW()),
+       ('Parts and Accessories', NOW()),
+       ('Pianos and Keys', NOW()),
+       ('String instruments', NOW()),
+       ('Stringed instruments', NOW()),
+       ('Remainder', NOW());
+
+INSERT INTO sub_category (name, created_at, category_id)
+VALUES ('Audio | Professional', NOW(), 1),
+       ('DJ sets and Turntables', NOW(), 1),
+       ('Effects', NOW(), 1),
+       ('Light and Laser', NOW(), 1),
+       ('Loudspeakers', NOW(), 1),
+       ('Mixers', NOW(), 1),
+       ('Microphones', NOW(), 1),
+       ('MIDI equipment', NOW(), 1),
+       ('Samplers', NOW(), 1),
+       ('Soundmodules', NOW(), 1),
+       ('Amplifiers | Bass and Guitar', NOW(), 1),
+       ('Amplifiers | Keyboard, Monitor and PA', NOW(), 1),
+       ('Recorders', NOW(), 2),
+       ('Didgeridoos', NOW(), 2),
+       ('Flutes and piccolo', NOW(), 2),
+       ('Hobos', NOW(), 2),
+       ('Horns', NOW(), 2),
+       ('Clarinets', NOW(), 2),
+       ('Harmonicas', NOW(), 2),
+       ('Saxophones', NOW(), 2),
+       ('Trombones', NOW(), 2),
+       ('Trumpets', NOW(), 2),
+       ('Tubas', NOW(), 2),
+       ('Remainder', NOW(), 2),
+       ('Music and Singing lessons', NOW(), 3),
+       ('Musicians, Artists and DJs', NOW(), 3),
+       ('Repair and Maintenance', NOW(), 3),
+       ('Drumcomputers', NOW(), 4),
+       ('Drum Sets', NOW(), 4),
+       ('Percussion', NOW(), 4),
+       ('Enclosures and Cases', NOW(), 5),
+       ('Music', NOW(), 5),
+       ('Components', NOW(), 5),
+       ('Belong', NOW(), 5),
+       ('Cables and Plugs', NOW(), 5),
+       ('Standards', NOW(), 5),
+       ('Theatre lighting', NOW(), 5),
+       ('Accordions', NOW(), 6),
+       ('Keyboards', NOW(), 6),
+       ('Organs', NOW(), 6),
+       ('Pianos', NOW(), 6),
+       ('Synthesizers', NOW(), 6),
+       ('Banjos', NOW(), 7),
+       ('Guitars | Acoustic', NOW(), 7),
+       ('Guitars | Bass', NOW(), 7),
+       ('Guitars | Electric', NOW(), 7),
+       ('Harps', NOW(), 7),
+       ('Harpsichords', NOW(), 7),
+       ('Mandolins', NOW(), 7),
+       ('Remainder', NOW(), 7),
+       ('Cellos', NOW(), 8),
+       ('Double basses', NOW(), 8),
+       ('Violins and Violas', NOW(), 8),
+       ('Remainder', NOW(), 8),
+       ('Books', NOW(), 9),
+       ('Barrel organs', NOW(), 9),
+       ('Orchestral tapes', NOW(), 9),
+       ('Other Music and Instruments', NOW(), 9);
+
+
+
 INSERT INTO users (first_name, last_name, street, house_number, postal_code, city, country, phone_number, iban, email, password, user_role, enabled, locked, created_at)
 VALUES ('John','Doe','Veemarktstraat','12','4811ZJ','Breda','Nederland','+31618588947','NL12INGB047583365','john.doe@gmail.com','$2a$10$J1cVbLW4.wDH.oydt1R3Gupx0qb3mw885FfLNE8U5Oz2Rc.YFbmry','USER', true, false, NOW()),
        ('Bart','Grootoonk','Stationsstraat','47','5867HH','Tilburg','Nederland','+31676893445','NL23ABNA083465899','bart.grootoonk@email.com','$2a$10$nIko989EJDWtb4f9jNnrdekCrLv88.rl1I.v/spnsudQSw7VY6mdy','USER', true, false, NOW()),
@@ -24,11 +97,11 @@ VALUES (NOW(), NOW(), NOW() + INTERVAL 1 HOUR, '88bf0629-45d3-4897-be7c-062bdf21
        (NOW(), NOW(), NOW() + INTERVAL 1 HOUR, '05bf9bf1-9580-4480-ae6f-b2bc490cdc79', 10);
 
 INSERT INTO advertisement (created_at, description, price, title, user_id)
-VALUES (NOW(), '3/4 Gitaar, met gitaartas-rugtas. Gitaar geeft een warm geluid', 1100, 'Godin Multiac Nylon SA', 1),
-       (NOW(), 'Prima keyboard. Inclusief lesboek.', 25, 'General Music Cd1 Hyper Keyboard', 3),
-       (NOW(), 'Professioneel alt-martijn saxofoonmodel handgemaakt, handgemaakt uit 1926, met de hand gegraveerd, individueel gelaste toongaten, opnieuw gepolijst met prestini merkpad in 2022, veren vervangen, werkend. Het wordt verzonden met een mordiba reistas, met koerier en verzekering.', 1200, 'Saxophone alto handcraft', 2),
-       (NOW(), 'Nu van € 525,00 voor € 399,00. Gratis thuis. Volledige fabrieksgarantie. Afgesteld geleverd. Uiteraard kunt u hem testen in onze showroom van 2000m2. Met 14 dagen niet goed geld terug garantie!', 399, 'Basgitaar Sterling Sub Ray 4 black en Ray24 Butterscotch', 7),
-       (NOW(), 'De legendarische SM58® (zonder schakelaar) is een branchestandaard, zeer veelzijdige, cardioïde, dynamische zangmicrofoon die speciaal gemaakt is voor een warme en heldere vocale weergave. De SM58® is steevast de eerste keuze voor zang optredens in de hele wereld.', 109, 'Shure | SM58 | microfoon', 9);
+VALUES (NOW(), '3/4 Guitar, with guitar bag backpack. Guitar gives a warm sound', 1100, 'Godin Multiac Nylon SA', 1),
+       (NOW(), 'Great keyboard. Including textbook.', 25, 'General Music Cd1 Hyper Keyboard', 3),
+       (NOW(), 'Professional alt-martijn saxophone model handmade, handmade from 1926, hand engraved, individually welded tone holes, re-polished with prestini brand pad in 2022, feathers replaced, working. It is shipped with a mordiba travel bag, with courier and insurance.', 1200, 'Saxophone alto handcraft', 2),
+       (NOW(), 'Now from € 525,00 for € 399,00. Free at home. Full manufacturers warranty. Delivered adjusted. Of course you can test it in our showroom of 2000m2. With 14 day money back guarantee!', 399, 'Basgitaar Sterling Sub Ray 4 black and Ray24 Butterscotch', 7),
+       (NOW(), 'The legendary SM58® (without switch) is an industry-standard, highly versatile, cardioid, dynamic vocal microphone specially made for a warm and clear vocal reproduction. The SM58® is invariably the first choice for singing performances around the world.', 109, 'Shure | SM58 | microfoon', 9);
 
 INSERT INTO resource (created_at, file_path, advertisement_id)
 VALUES (NOW(), 'https://cdn.webshopapp.com/shops/179375/files/349741130/je-akoestische-gitaar-versterken-en-opnemen.jpg', 1),

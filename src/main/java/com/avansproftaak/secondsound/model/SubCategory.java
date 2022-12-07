@@ -24,7 +24,7 @@ public class SubCategory {
 
     @ManyToOne
     @JoinColumn(nullable = false)
-    private SubCategory subCategory;
+    private Category category;
 
     @CreationTimestamp
     private LocalDateTime createdAt;
