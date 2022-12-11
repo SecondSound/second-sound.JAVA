@@ -34,7 +34,7 @@ public class AdvertisementController {
     }
 
     @PostMapping(path = "advertisement")
-    public AdvertisementDto AddAdvertisement(@RequestBody AdvertisementData advertisementData) throws ParseException {
+    public AdvertisementDto AddAdvertisement(@RequestBody AdvertisementData advertisementData) {
         return advertisementService.addAdvertisement(advertisementData);
     }
 
