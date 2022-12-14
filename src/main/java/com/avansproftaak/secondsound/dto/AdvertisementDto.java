@@ -33,4 +33,5 @@ public class AdvertisementDto {
         this.imgFile = imgFile;
         this.subCategory = subCategory;
     }
+
 }

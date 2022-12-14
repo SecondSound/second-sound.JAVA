@@ -78,6 +78,8 @@ public class AdvertisementService {
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "SubCategory unknown"));
         var seller = userService.getSeller(advertisement.getUser().getId());
 
+        System.out.println(seller.getLastName());
+
         return new AdvertisementDto(
                 advertisement.getId(),
                 advertisement.getTitle(),
@@ -92,4 +94,10 @@ public class AdvertisementService {
         return modelMapper.map(user, UserDto.class);
     }
 
+    public AdvertisementDto getFullAdvertisement(Long id) {
+        var advertisement = advertisementRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Subcategory unknown"));
+
+        return getAdvertisement(advertisement);
+    }
 }

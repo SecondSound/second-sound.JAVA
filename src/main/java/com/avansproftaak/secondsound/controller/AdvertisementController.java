@@ -33,6 +33,12 @@ public class AdvertisementController {
         return advertisementService.getAllAdvertisements();
     }
 
+    @GetMapping(path="public/advertisement/{id}")
+    public AdvertisementDto getAdvertisement(@PathVariable Long id) {
+        return advertisementService.getFullAdvertisement(id);
+    }
+
+
     @PostMapping(path = "advertisement")
     public AdvertisementDto AddAdvertisement(@RequestBody AdvertisementData advertisementData) {
         return advertisementService.addAdvertisement(advertisementData);
