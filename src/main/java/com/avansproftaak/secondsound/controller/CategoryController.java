@@ -2,6 +2,7 @@ package com.avansproftaak.secondsound.controller;
 
 import com.avansproftaak.secondsound.dto.AdvertisementData;
 import com.avansproftaak.secondsound.dto.AdvertisementDto;
+import com.avansproftaak.secondsound.dto.CategoryDto;
 import com.avansproftaak.secondsound.model.Category;
 import com.avansproftaak.secondsound.model.SubCategory;
 import com.avansproftaak.secondsound.repository.SubCategoryRepository;
@@ -37,5 +38,8 @@ public class CategoryController {
         return categoryService.getSubCategories(id);
     }
 
-
+    @GetMapping(path="public/categories/dto")
+    public List<CategoryDto> getAllCategoriesDto() {
+        return categoryService.getCategoriesDto();
+    }
 }

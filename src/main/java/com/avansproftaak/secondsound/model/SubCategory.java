@@ -31,4 +31,9 @@ public class SubCategory {
 
     @UpdateTimestamp
     private LocalDateTime updatedAt;
+
+    public SubCategory(Long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
 }
