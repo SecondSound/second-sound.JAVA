@@ -1,6 +1,5 @@
 package com.avansproftaak.secondsound.service;
 
-import com.avansproftaak.secondsound.controller.UserController;
 import com.avansproftaak.secondsound.dto.AdvertisementData;
 import com.avansproftaak.secondsound.dto.AdvertisementDto;
 import com.avansproftaak.secondsound.dto.UserDto;
@@ -11,15 +10,10 @@ import com.avansproftaak.secondsound.repository.*;
 import com.fasterxml.jackson.core.io.BigDecimalParser;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.math.BigDecimal;
-import java.text.NumberFormat;
-import java.text.ParseException;
 import java.util.*;
 
 @Service
@@ -42,6 +36,7 @@ public class AdvertisementService {
 
             var subcategory = subCategoryRepository.findById(advertisement.getSubCategory().getId())
                     .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Subcategory unknown"));
+
             var seller = userService.getSeller(advertisement.getUser().getId());
 
             var advertisementDto = new AdvertisementDto(

@@ -1,5 +1,6 @@
 package com.avansproftaak.secondsound.service;
 
+import com.avansproftaak.secondsound.dto.CategoryDto;
 import com.avansproftaak.secondsound.model.Category;
 import com.avansproftaak.secondsound.model.SubCategory;
 import com.avansproftaak.secondsound.util.CategoryNameComparator;
@@ -66,5 +67,19 @@ public class CategoryService {
         }
 
         return finalList;
+    }
+
+    public ArrayList<CategoryDto> getAllCategoryDto() {
+        var categoryList = getCategories();
+        var categoryDtoList = new ArrayList<CategoryDto>();
+
+        for (Category category: categoryList) {
+            var subCategories = subCategoryRepository.findAllByCategoryId(category.getId());
+
+            var newCategoryDto = new CategoryDto(category.getId(), category.getName(), subCategories);
+            categoryDtoList.add(newCategoryDto);
+        }
+
+        return categoryDtoList;
     }
 }

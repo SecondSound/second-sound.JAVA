@@ -20,7 +20,6 @@ public class SubCategory {
     private Long id;
 
     private String name;
-    private String description;
 
     @ManyToOne
     @JoinColumn(nullable = false)
