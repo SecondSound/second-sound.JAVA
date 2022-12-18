@@ -68,7 +68,7 @@ public class CategoryService {
 
         return finalList;
     }
-
+    
     public List<CategoryDto> getCategoriesDto() {
         var categories = this.categoryRepository.findAll();
         var categoryDtoList = new ArrayList<CategoryDto>();
@@ -77,9 +77,8 @@ public class CategoryService {
 
             var subCategories = this.subCategoryRepository.findAllByCategoryId(category.getId());
             categoryDtoList.add(new CategoryDto(category.getId(), category.getName(), subCategories));
-        }
 
+        }
         return categoryDtoList;
     }
-
 }
