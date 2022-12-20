@@ -4,6 +4,7 @@ import com.avansproftaak.secondsound.dto.AdvertisementData;
 import com.avansproftaak.secondsound.dto.AdvertisementDto;
 import com.avansproftaak.secondsound.dto.UserDto;
 import com.avansproftaak.secondsound.model.Advertisement;
+import com.avansproftaak.secondsound.model.SavedAdvertisement;
 import com.avansproftaak.secondsound.model.SubCategory;
 import com.avansproftaak.secondsound.model.User;
 import com.avansproftaak.secondsound.repository.*;
@@ -25,6 +26,7 @@ public class AdvertisementService {
     private final AdvertisementRepository advertisementRepository;
     private final ResourceRepository resourceRepository;
     private final SubCategoryRepository subCategoryRepository;
+    private final SavedAdvertisementRepository savedAdvertisementRepository;
     private final ModelMapper modelMapper;
 
     public List<AdvertisementDto> getAllAdvertisements() {
@@ -95,4 +97,41 @@ public class AdvertisementService {
 
         return getAdvertisement(advertisement);
     }
+
+    public List<SavedAdvertisement> getSavedAdvertisements() {
+
+        User user = userService.getAuthenticatedUser();
+        return savedAdvertisementRepository.findByUserId(user.getId());
+    }
+
+    public boolean savedAdvertisementHandler(Long advertisementId){
+        User user = userService.getAuthenticatedUser();
+        Advertisement advertisement = advertisementRepository.findById(advertisementId)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Advertisement not found"));
+
+        var exists = savedAdvertisementRepository.checkIfExist(user.getId(), advertisement.getId());
+
+        if (exists.isEmpty()) {
+            return addSavedAdvertisement(advertisement, user);
+        } else {
+            return deleteSavedAdvertisement(advertisement, user);
+        }
+    }
+
+    public boolean addSavedAdvertisement(Advertisement advertisement, User user) {
+            var savedAdvertisement = new SavedAdvertisement();
+            savedAdvertisement.setAdvertisement(advertisement);
+            savedAdvertisement.setUser(user);
+            savedAdvertisementRepository.save(savedAdvertisement);
+            return true;
+    }
+
+    public boolean deleteSavedAdvertisement(Advertisement advertisement, User user) {
+        var savedAdvertisement = savedAdvertisementRepository.checkIfExist(user.getId(), advertisement.getId())
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Saved advertisement not found"));
+
+        savedAdvertisementRepository.deleteById(savedAdvertisement.getId());
+        return false;
+    }
+
 }
