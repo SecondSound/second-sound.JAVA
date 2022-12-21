@@ -115,5 +115,11 @@ VALUES (NOW(), 1, 1, 2),
        (NOW(), 2, 3, 4),
        (NOW(), 4, 2, 1);
 
+INSERT INTO message (created_at, message, chat_id, sender_id, receiver_id)
+VALUES (NOW(), "test message", 1, 1, 2),
+        (NOW(), "test message2", 1, 2, 1),
+        (NOW(),"test", 2, 3, 4),
+        (NOW(),"test2", 2, 4, 3);
+
 
 

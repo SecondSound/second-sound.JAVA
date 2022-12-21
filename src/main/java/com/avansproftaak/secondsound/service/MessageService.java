@@ -13,6 +13,7 @@ import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 
 
@@ -29,11 +30,10 @@ public class MessageService {
 
     }
 
+    public List<Message> getMessagesByChat(Long id) {
+        return messageRepository.findAllByChat(id);
+    }
 
-//    public AdvertisementDto getMessage(Advertisement advertisement) {
-//
-//        UserDto userDto = getSeller(advertisement.getUser());
-//        return new AdvertisementDto(advertisement.getId(), advertisement.getTitle(), advertisement.getDescription(), advertisement.getPrice(), userDto);
-//    }
+
 
 }

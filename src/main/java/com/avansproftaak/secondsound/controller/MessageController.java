@@ -1,5 +1,6 @@
 package com.avansproftaak.secondsound.controller;
 
+import com.avansproftaak.secondsound.dto.AdvertisementDto;
 import com.avansproftaak.secondsound.model.Chat;
 import com.avansproftaak.secondsound.model.Message;
 import com.avansproftaak.secondsound.service.AdvertisementService;
@@ -7,6 +8,7 @@ import com.avansproftaak.secondsound.service.ChatService;
 import com.avansproftaak.secondsound.service.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
@@ -32,6 +34,11 @@ public class MessageController {
     @GetMapping(path="public/message")
     public List<Message> getAllMessages() {
         return messageService.getAllMessages();
+    }
+
+    @GetMapping(path="public/message/{id}")
+    public List<Message> getMessagesByChat(@PathVariable Long id) {
+        return messageService.getMessagesByChat(id);
     }
 
 //        @PostMapping(path = "advertisement")

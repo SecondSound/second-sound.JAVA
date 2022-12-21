@@ -33,9 +33,6 @@ public class Chat {
     @JoinColumn(nullable = true)
     private User receiver;
 
-//    @OneToMany
-//    @JoinColumn(nullable = false)
-//    private List<Message> message;
 
     @CreationTimestamp
     private LocalDateTime createdAt;

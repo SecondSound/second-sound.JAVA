@@ -21,8 +21,9 @@ public class Message {
     private Long id;
 
     @NotNull
-    private String title;
+    private Long chatId;
 
+    @NotNull
     private String message;
 
     @ManyToOne
@@ -33,13 +34,13 @@ public class Message {
     @JoinColumn(nullable = false)
     private User receiver;
 
-    private LocalDateTime sendAt;
-
     @CreationTimestamp
     private LocalDateTime createdAt;
 
-    @UpdateTimestamp
-    private LocalDateTime updatedAt;
-
-
+    public Message(Long chatId,String message, User sender, User receiver) {
+        this.chatId = chatId;
+        this.message = message;
+        this.sender = sender;
+        this.receiver = receiver;
+    }
 }
