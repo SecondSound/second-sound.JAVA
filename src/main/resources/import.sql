@@ -109,3 +109,11 @@ VALUES (NOW(), 'https://cdn.webshopapp.com/shops/179375/files/349741130/je-akoes
        (NOW(), 'https://basensax.nl/images/virtuemart/product/p1050082-1589602842.jpg', 3),
        (NOW(), 'https://i.pinimg.com/originals/fe/56/f0/fe56f0cb02a22f2a4b9813f163066d5d.jpg', 4),
        (NOW(), 'https://medias.audiofanzine.com/images/normal/shure-sm58-876627.jpg', 5);
+
+INSERT INTO chat (created_at, advertisement_id, sender_id, receiver_id)
+VALUES (NOW(), 1, 1, 2),
+       (NOW(), 2, 3, 4),
+       (NOW(), 4, 2, 1);
+
+
+
