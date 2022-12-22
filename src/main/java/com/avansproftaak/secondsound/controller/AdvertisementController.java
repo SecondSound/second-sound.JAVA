@@ -21,8 +21,13 @@ public class AdvertisementController {
     }
 
     @GetMapping(path="public/advertisement")
-    public List<AdvertisementDto> getAllAdvertisements() {
-        return advertisementService.getAllAdvertisements();
+    public List<AdvertisementDto> getAllAdvertisementsPublic() {
+        return advertisementService.getAllAdvertisementsPublic();
+    }
+
+    @GetMapping(path="advertisement")
+    public List<AdvertisementDto> getAllAdvertisementsAuth() {
+        return advertisementService.getAllAdvertisementsAuth();
     }
 
     @GetMapping(path="public/advertisement/{id}")

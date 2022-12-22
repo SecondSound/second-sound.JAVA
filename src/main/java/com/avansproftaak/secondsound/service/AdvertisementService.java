@@ -12,6 +12,7 @@ import com.fasterxml.jackson.core.io.BigDecimalParser;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -29,16 +30,14 @@ public class AdvertisementService {
     private final SavedAdvertisementRepository savedAdvertisementRepository;
     private final ModelMapper modelMapper;
 
-    public List<AdvertisementDto> getAllAdvertisements() {
+    public List<AdvertisementDto> getAllAdvertisementsPublic() {
 
         var adList = advertisementRepository.findAll();
         ArrayList<AdvertisementDto> adListDto = new ArrayList<>();
 
         for (Advertisement advertisement : adList) {
-
             var subcategory = subCategoryRepository.findById(advertisement.getSubCategory().getId())
                     .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Subcategory unknown"));
-
             var seller = userService.getSeller(advertisement.getUser().getId());
 
             var advertisementDto = new AdvertisementDto(
@@ -48,12 +47,43 @@ public class AdvertisementService {
                     advertisement.getPrice(),
                     resourceRepository.findImagesByAdvertisementId(advertisement.getId()),
                     subcategory,
-                    seller);
+                    seller,
+                    false);
 
             adListDto.add(advertisementDto);
         }
         return adListDto;
+    }
 
+    public List<AdvertisementDto> getAllAdvertisementsAuth() {
+        var adList = advertisementRepository.findAll();
+        ArrayList<AdvertisementDto> adListDto = new ArrayList<>();
+        var user = userService.getAuthenticatedUser();
+
+        for (Advertisement advertisement : adList) {
+            var subcategory = subCategoryRepository.findById(advertisement.getSubCategory().getId())
+                    .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Subcategory unknown"));
+            var seller = userService.getSeller(advertisement.getUser().getId());
+
+            var advertisementDto = new AdvertisementDto(
+                    advertisement.getId(),
+                    advertisement.getTitle(),
+                    advertisement.getDescription(),
+                    advertisement.getPrice(),
+                    resourceRepository.findImagesByAdvertisementId(advertisement.getId()),
+                    subcategory,
+                    seller,
+                    isSaved(user, advertisement));
+
+            System.out.println("isSaved: " + advertisementDto.isSaved());
+            adListDto.add(advertisementDto);
+        }
+        return adListDto;
+    }
+
+    public boolean isSaved(User user, Advertisement advertisement) {
+
+        return savedAdvertisementRepository.existsByUserAndAdvertisement(user, advertisement);
     }
 
     public AdvertisementDto addAdvertisement(AdvertisementData advertisement) {
@@ -84,7 +114,8 @@ public class AdvertisementService {
                 advertisement.getPrice(),
                 resourceRepository.findImagesByAdvertisementId(advertisement.getId()),
                 subcategory,
-                seller);
+                seller,
+                false);
     }
 
     public UserDto getSeller(User user) {
@@ -109,9 +140,10 @@ public class AdvertisementService {
         Advertisement advertisement = advertisementRepository.findById(advertisementId)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Advertisement not found"));
 
-        var exists = savedAdvertisementRepository.checkIfExist(user.getId(), advertisement.getId());
+        var exists = savedAdvertisementRepository.existsByUserAndAdvertisement(user, advertisement);
+        System.out.println("exists: " + exists);
 
-        if (exists.isEmpty()) {
+        if (!exists) {
             return addSavedAdvertisement(advertisement, user);
         } else {
             return deleteSavedAdvertisement(advertisement, user);
@@ -127,11 +159,12 @@ public class AdvertisementService {
     }
 
     public boolean deleteSavedAdvertisement(Advertisement advertisement, User user) {
-        var savedAdvertisement = savedAdvertisementRepository.checkIfExist(user.getId(), advertisement.getId())
+        var savedAdvertisement = savedAdvertisementRepository.getSavedAdvertisement(user.getId(), advertisement.getId())
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Saved advertisement not found"));
 
         savedAdvertisementRepository.deleteById(savedAdvertisement.getId());
         return false;
     }
+
 
 }
