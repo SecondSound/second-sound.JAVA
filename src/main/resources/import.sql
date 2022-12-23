@@ -111,9 +111,9 @@ VALUES (NOW(), 'https://cdn.webshopapp.com/shops/179375/files/349741130/je-akoes
        (NOW(), 'https://medias.audiofanzine.com/images/normal/shure-sm58-876627.jpg', 5);
 
 INSERT INTO chat (created_at, advertisement_id, sender_id, receiver_id)
-VALUES (NOW(), 1, 1, 2),
+VALUES (NOW(), 1, 11, 2),
        (NOW(), 2, 3, 4),
-       (NOW(), 4, 2, 1);
+       (NOW(), 4, 2, 11);
 
 INSERT INTO message (created_at, message, chat_id, sender_id, receiver_id)
 VALUES (NOW(), "test message", 1, 1, 2),

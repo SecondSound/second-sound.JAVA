@@ -35,7 +35,7 @@ import java.util.UUID;
             this.messageService = messageService;
         }
 
-        @GetMapping(path="public/chat")
+        @GetMapping(path="chat")
         public List<ChatDto> findAllChat() {
             System.out.println("findallchat");
             return chatService.getAllChats();

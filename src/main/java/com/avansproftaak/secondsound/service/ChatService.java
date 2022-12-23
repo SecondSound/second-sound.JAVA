@@ -25,23 +25,29 @@ public class ChatService {
 
 
     public List<ChatDto> getAllChats() {
-        var chats = chatRepository.findAll();
+        User user = userService.getAuthenticatedUser();
+
+        System.out.println(user.getId());
+        var chats = chatRepository.findBySenderOrReceiver(user,user);
         ArrayList<ChatDto> chatsDtoList = new ArrayList<>();
+
 
         for (Chat chat : chats) {
 
-          var chatDto = new ChatDto(
+            var chatDto = new ChatDto(
                     chat.getId(),
                     advertisementService.getAdvertisement(chat.getAdvertisement()),
                     chat.getSender(),
                     chat.getReceiver());
 
-          var add = chatDto.getAdvertisement();
-          chatsDtoList.add(chatDto);
+            var add = chatDto.getAdvertisement();
+            chatsDtoList.add(chatDto);
         }
         return chatsDtoList;
 
         }
+
+
 
 //    public List<AdvertisementDto> getAllCats() {
 //
