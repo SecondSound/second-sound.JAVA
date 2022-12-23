@@ -20,4 +20,8 @@ public interface SavedAdvertisementRepository extends JpaRepository<SavedAdverti
     Optional<SavedAdvertisement> getSavedAdvertisement(Long id, Long id1);
 
     boolean existsByUserAndAdvertisement(User user, Advertisement advertisement);
+
+    boolean existsByUser(User user);
+
+    List<SavedAdvertisement> findAllByUser(User user);
 }

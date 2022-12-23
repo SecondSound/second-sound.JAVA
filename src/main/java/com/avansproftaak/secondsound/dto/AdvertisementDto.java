@@ -36,4 +36,13 @@ public class AdvertisementDto {
         this.subCategory = subCategory;
     }
 
+    public AdvertisementDto(Long id, String title, String description, BigDecimal price, String imgFile, SubCategory subcategory, SellerDto seller) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.price = price;
+        this.imgFile = imgFile;
+        this.subCategory = subcategory;
+        this.seller = seller;
+    }
 }

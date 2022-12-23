@@ -40,12 +40,12 @@ public class AdvertisementController {
         return advertisementService.addAdvertisement(advertisementData);
     }
 
-    @GetMapping(path = "advertisement/saved/get")
-    public List<SavedAdvertisement> AddAdvertisement() {
+    @GetMapping(path = "advertisement/saved")
+    public List<AdvertisementDto> AddAdvertisement() {
         return advertisementService.getSavedAdvertisements();
     }
 
-    @PostMapping(path = "advertisement/saved/post")
+    @PostMapping(path = "advertisement/saved")
     public boolean saveAdvertisement(@RequestBody Long advertisementId) {
         return advertisementService.savedAdvertisementHandler(advertisementId);
     }
