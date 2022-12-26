@@ -31,7 +31,7 @@ public class Message {
     private User sender;
 
     @ManyToOne
-    @JoinColumn(nullable = false)
+    @JoinColumn(nullable = true)
     private User receiver;
 
     @CreationTimestamp

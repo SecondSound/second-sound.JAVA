@@ -47,41 +47,6 @@ public class ChatService {
 
         }
 
-
-
-//    public List<AdvertisementDto> getAllCats() {
-//
-//        var adList = advertisementRepository.findAll();
-//        ArrayList<AdvertisementDto> adListDto = new ArrayList<>();
-//
-//        for (Advertisement advertisement : adList) {
-//
-//            var subcategory = subCategoryRepository.findById(advertisement.getSubCategory().getId())
-//                    .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Subcategory unknown"));
-//
-//            var seller = userService.getSeller(advertisement.getUser().getId());
-//
-//            var advertisementDto = new AdvertisementDto(
-//                    advertisement.getId(),
-//                    advertisement.getTitle(),
-//                    advertisement.getDescription(),
-//                    advertisement.getPrice(),
-//                    resourceRepository.findImagesByAdvertisementId(advertisement.getId()),
-//                    subcategory,
-//                    seller);
-//
-//            adListDto.add(advertisementDto);
-//        }
-//        return adListDto;
-//
-//    }
-
-
-/*    public List<Chat> loadChatBySenderOrReceiver(String user) throws ResponseStatusException {
-        return chatRepository.findBySenderOrReceiver(user, user).orElseThrow(() ->
-                new ResponseStatusException(HttpStatus.NOT_FOUND, "No chats found for user " + user ));
-    }*/
-
     public ChatDto getChat(Chat chat) {
 
         return new ChatDto(
@@ -91,7 +56,7 @@ public class ChatService {
                 chat.getReceiver());
     }
 
-    public ChatDto addAdvertisement(Chat chat) {
+    public ChatDto addChat(Chat chat) {
 
         User user = userService.getAuthenticatedUser();
 
