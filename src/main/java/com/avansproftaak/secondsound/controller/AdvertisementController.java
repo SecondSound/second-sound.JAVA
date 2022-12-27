@@ -2,18 +2,10 @@ package com.avansproftaak.secondsound.controller;
 
 import com.avansproftaak.secondsound.dto.AdvertisementData;
 import com.avansproftaak.secondsound.dto.AdvertisementDto;
-import com.avansproftaak.secondsound.dto.UserDto;
-import com.avansproftaak.secondsound.model.Advertisement;
+import com.avansproftaak.secondsound.model.SavedAdvertisement;
 import com.avansproftaak.secondsound.service.AdvertisementService;
-import com.avansproftaak.secondsound.service.UserService;
-import jakarta.validation.Valid;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
-
-import java.text.ParseException;
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -29,8 +21,13 @@ public class AdvertisementController {
     }
 
     @GetMapping(path="public/advertisement")
-    public List<AdvertisementDto> getAllAdvertisements() {
-        return advertisementService.getAllAdvertisements();
+    public List<AdvertisementDto> getAllAdvertisementsPublic() {
+        return advertisementService.getAllAdvertisementsPublic();
+    }
+
+    @GetMapping(path="advertisement")
+    public List<AdvertisementDto> getAllAdvertisementsAuth() {
+        return advertisementService.getAllAdvertisementsAuth();
     }
 
     @GetMapping(path="public/advertisement/{id}")
@@ -38,10 +35,18 @@ public class AdvertisementController {
         return advertisementService.getFullAdvertisement(id);
     }
 
-
     @PostMapping(path = "advertisement")
     public AdvertisementDto AddAdvertisement(@RequestBody AdvertisementData advertisementData) {
         return advertisementService.addAdvertisement(advertisementData);
     }
 
+    @GetMapping(path = "advertisement/saved")
+    public List<AdvertisementDto> AddAdvertisement() {
+        return advertisementService.getSavedAdvertisements();
+    }
+
+    @PostMapping(path = "advertisement/saved")
+    public boolean saveAdvertisement(@RequestBody Long advertisementId) {
+        return advertisementService.savedAdvertisementHandler(advertisementId);
+    }
 }

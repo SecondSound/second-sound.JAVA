@@ -11,6 +11,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 @Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode
@@ -24,6 +25,7 @@ public class AdvertisementDto {
     private String imgFile;
     private SubCategory subCategory;
     private SellerDto seller;
+    private boolean isSaved;
 
     public AdvertisementDto(Long id, String title, String description, BigDecimal price, String imgFile, SubCategory subCategory) {
         this.id = id;
@@ -34,4 +36,13 @@ public class AdvertisementDto {
         this.subCategory = subCategory;
     }
 
+    public AdvertisementDto(Long id, String title, String description, BigDecimal price, String imgFile, SubCategory subcategory, SellerDto seller) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.price = price;
+        this.imgFile = imgFile;
+        this.subCategory = subcategory;
+        this.seller = seller;
+    }
 }
