@@ -7,6 +7,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -37,4 +38,10 @@ public class Bid {
     private LocalDateTime updatedAt;
 
 
+    public Bid(BigDecimal amount, Advertisement advertisement, User bidder) {
+        this.amount = amount;
+        this.bidder = bidder;
+        this.advertisement = advertisement;
+
+    }
 }

@@ -12,7 +12,6 @@ import com.fasterxml.jackson.core.io.BigDecimalParser;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -38,7 +37,7 @@ public class AdvertisementService {
         for (Advertisement advertisement : adList) {
             var subcategory = subCategoryRepository.findById(advertisement.getSubCategory().getId())
                     .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Subcategory unknown"));
-            var seller = userService.getSeller(advertisement.getUser().getId());
+            var seller = userService.getSellerOrBidder(advertisement.getUser().getId());
 
             var advertisementDto = new AdvertisementDto(
                     advertisement.getId(),
@@ -63,7 +62,7 @@ public class AdvertisementService {
         for (Advertisement advertisement : adList) {
             var subcategory = subCategoryRepository.findById(advertisement.getSubCategory().getId())
                     .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Subcategory unknown"));
-            var seller = userService.getSeller(advertisement.getUser().getId());
+            var seller = userService.getSellerOrBidder(advertisement.getUser().getId());
 
             var advertisementDto = new AdvertisementDto(
                     advertisement.getId(),
@@ -102,7 +101,7 @@ public class AdvertisementService {
 
         var subcategory = subCategoryRepository.findById(advertisement.getSubCategory().getId())
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "SubCategory unknown"));
-        var seller = userService.getSeller(advertisement.getUser().getId());
+        var seller = userService.getSellerOrBidder(advertisement.getUser().getId());
 
         return new AdvertisementDto(
                 advertisement.getId(),
@@ -139,7 +138,7 @@ public class AdvertisementService {
 
                 var subcategory = subCategoryRepository.findById(advertisement.getSubCategory().getId())
                         .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "SubCategory unknown"));
-                var seller = userService.getSeller(advertisement.getUser().getId());
+                var seller = userService.getSellerOrBidder(advertisement.getUser().getId());
 
                 savedAdList.add(new AdvertisementDto(
                         advertisement.getId(),

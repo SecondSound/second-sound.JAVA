@@ -124,7 +124,7 @@ public class UserService implements UserDetailsService {
         return modelMapper.map(getAuthenticatedUser(), UserDto.class);
     }
 
-    public SellerDto getSeller(Long sellerId) {
+    public SellerDto getSellerOrBidder(Long sellerId) {
 
         var user = userRepository.findById(sellerId)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User unknown"));

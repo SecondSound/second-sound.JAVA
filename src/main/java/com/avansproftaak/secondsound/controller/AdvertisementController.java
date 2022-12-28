@@ -2,7 +2,6 @@ package com.avansproftaak.secondsound.controller;
 
 import com.avansproftaak.secondsound.dto.AdvertisementData;
 import com.avansproftaak.secondsound.dto.AdvertisementDto;
-import com.avansproftaak.secondsound.model.SavedAdvertisement;
 import com.avansproftaak.secondsound.service.AdvertisementService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
