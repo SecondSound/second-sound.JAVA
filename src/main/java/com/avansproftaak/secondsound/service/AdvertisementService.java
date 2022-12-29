@@ -29,7 +29,7 @@ public class AdvertisementService {
     private final SavedAdvertisementRepository savedAdvertisementRepository;
     private final ModelMapper modelMapper;
 
-    public List<AdvertisementDto> getAllAdvertisementsPublic() {
+    public ArrayList<AdvertisementDto> getAllAdvertisementsPublic() {
 
         var adList = advertisementRepository.findAll();
         ArrayList<AdvertisementDto> adListDto = new ArrayList<>();
@@ -54,7 +54,7 @@ public class AdvertisementService {
         return adListDto;
     }
 
-    public List<AdvertisementDto> getAllAdvertisementsAuth() {
+    public ArrayList<AdvertisementDto> getAllAdvertisementsAuth() {
         var adList = advertisementRepository.findAll();
         ArrayList<AdvertisementDto> adListDto = new ArrayList<>();
         var user = userService.getAuthenticatedUser();

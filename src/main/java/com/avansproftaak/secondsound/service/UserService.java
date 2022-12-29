@@ -157,4 +157,5 @@ public class UserService implements UserDetailsService {
                 user.getEmail(),
                 activeAdvertisementDtoList);
     }
+
 }

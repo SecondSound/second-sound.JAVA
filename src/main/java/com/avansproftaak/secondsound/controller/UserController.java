@@ -1,5 +1,7 @@
 package com.avansproftaak.secondsound.controller;
 
+import com.avansproftaak.secondsound.dto.AdvertisementDto;
+import com.avansproftaak.secondsound.dto.SellerDto;
 import com.avansproftaak.secondsound.dto.UserDto;
 import com.avansproftaak.secondsound.model.User;
 import com.avansproftaak.secondsound.service.UserService;
