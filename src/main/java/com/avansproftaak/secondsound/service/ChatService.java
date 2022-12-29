@@ -59,7 +59,7 @@ public class ChatService {
     public ChatDto addChat(Chat chat) {
 
         User user = userService.getAuthenticatedUser();
-
+//        todo: if chat exist go to chat
         Chat newChat = new Chat(chat.getAdvertisement(), chat.getSender(), chat.getReceiver());
         chatRepository.save(newChat);
 
