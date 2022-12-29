@@ -53,7 +53,7 @@ import java.util.UUID;
         }
 
         @PostMapping(path = "chat/create/{id}")
-        public Boolean startChat(@RequestBody IdDto id) {
+        public String startChat(@RequestBody IdDto id) {
 
             System.out.println("hit by " + id);
             var advertisement = advertisementRepository.findById(id.getId())
@@ -64,8 +64,10 @@ import java.util.UUID;
                     userService.getAuthenticatedUser(),
                     advertisement.getUser()
             );
-            chatService.addChat(chat);
-            return true;
+            ChatDto savedChat = chatService.addChat(chat);
+            System.out.println(savedChat.getId());
+            var chatId = savedChat.getId().toString();
+            return chatId;
         }
 
 }
