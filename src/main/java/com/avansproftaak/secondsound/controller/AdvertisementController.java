@@ -6,10 +6,11 @@ import com.avansproftaak.secondsound.dto.SellerDto;
 import com.avansproftaak.secondsound.service.AdvertisementService;
 import com.avansproftaak.secondsound.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.lang.Nullable;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 
 @RestController
@@ -26,13 +27,13 @@ public class AdvertisementController {
     }
 
     @GetMapping(path="public/advertisement")
-    public ArrayList<AdvertisementDto> getAllAdvertisementsPublic() {
-        return advertisementService.getAllAdvertisementsPublic();
+    public List<AdvertisementDto> getAllAdvertisementsPublic(@RequestParam("query") @Nullable Optional<String> query) {
+        return advertisementService.getAllAdvertisementsPublic(query);
     }
 
     @GetMapping(path="advertisement")
-    public ArrayList<AdvertisementDto> getAllAdvertisementsAuth() {
-        return advertisementService.getAllAdvertisementsAuth();
+    public List<AdvertisementDto> getAllAdvertisementsAuth(@RequestParam("query") @Nullable Optional<String> query) {
+        return advertisementService.getAllAdvertisementsAuth(query);
     }
 
     @GetMapping(path="public/advertisement/{id}")
@@ -54,10 +55,13 @@ public class AdvertisementController {
     public boolean saveAdvertisement(@RequestBody Long advertisementId) {
         return advertisementService.savedAdvertisementHandler(advertisementId);
     }
-
+    
     @GetMapping(path = "public/advertisement/seller/{id}")
     public SellerDto getSeller(@PathVariable Long id) {
         return userService.getSellerOrBidder(id);
-    }
 
+    @GetMapping(path="user/advertisement")
+    public List<AdvertisementDto> getAllAdvertisementsUser() {
+        return advertisementService.getAllAdvertisementsUser();
+    }
 }

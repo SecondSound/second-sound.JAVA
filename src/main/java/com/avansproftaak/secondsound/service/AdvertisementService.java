@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -29,9 +30,15 @@ public class AdvertisementService {
     private final SavedAdvertisementRepository savedAdvertisementRepository;
     private final ModelMapper modelMapper;
 
-    public ArrayList<AdvertisementDto> getAllAdvertisementsPublic() {
 
-        var adList = advertisementRepository.findAll();
+    public List<AdvertisementDto> getAllAdvertisementsPublic(Optional<String> query) {
+
+        List<Advertisement> adList;
+        if (query.isPresent()) {
+            adList = advertisementRepository.findAllByQuery("%"+query.get()+"%");
+        } else {
+            adList = advertisementRepository.findAll();
+        }
         ArrayList<AdvertisementDto> adListDto = new ArrayList<>();
 
         for (Advertisement advertisement : adList) {
@@ -53,34 +60,19 @@ public class AdvertisementService {
         }
         return adListDto;
     }
-
-    public ArrayList<AdvertisementDto> getAllAdvertisementsAuth() {
-        var adList = advertisementRepository.findAll();
-        ArrayList<AdvertisementDto> adListDto = new ArrayList<>();
-        var user = userService.getAuthenticatedUser();
-
-        for (Advertisement advertisement : adList) {
-            var subcategory = subCategoryRepository.findById(advertisement.getSubCategory().getId())
-                    .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Subcategory unknown"));
-            var seller = userService.getSellerOrBidder(advertisement.getUser().getId());
-
-            var advertisementDto = new AdvertisementDto(
-                    advertisement.getId(),
-                    advertisement.getTitle(),
-                    advertisement.getDescription(),
-                    advertisement.getPrice(),
-                    resourceRepository.findImagesByAdvertisementId(advertisement.getId()),
-                    subcategory,
-                    seller,
-                    isSaved(user, advertisement));
-
-            adListDto.add(advertisementDto);
+    
+    public List<AdvertisementDto> getAllAdvertisementsAuth(Optional<String> query) {
+        List<Advertisement> adList;
+        if (query.isPresent()) {
+            adList = advertisementRepository.findAllByQuery("%"+query.get()+"%");
+        } else {
+            adList = advertisementRepository.findAll();
         }
-        return adListDto;
+        
+        return mapAdvertisementDto(adList);
     }
 
     public boolean isSaved(User user, Advertisement advertisement) {
-
         return savedAdvertisementRepository.existsByUserAndAdvertisement(user, advertisement);
     }
 
@@ -186,5 +178,38 @@ public class AdvertisementService {
 
         savedAdvertisementRepository.deleteById(savedAdvertisement.getId());
         return false;
+    }
+
+    public List<AdvertisementDto> getAllAdvertisementsUser() {
+        User user = userService.getAuthenticatedUser();
+
+        List<Advertisement> userAdvertisements = advertisementRepository.findAllByUser(user);
+
+        return mapAdvertisementDto(userAdvertisements);
+    }
+
+    private List<AdvertisementDto> mapAdvertisementDto(List<Advertisement> adList) {
+        ArrayList<AdvertisementDto> adListDto = new ArrayList<>();
+        var user = userService.getAuthenticatedUser();
+
+        for (Advertisement advertisement : adList) {
+            var subcategory = subCategoryRepository.findById(advertisement.getSubCategory().getId())
+                    .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Subcategory unknown"));
+            var seller = userService.getSellerOrBidder(advertisement.getUser().getId());
+
+            var advertisementDto = new AdvertisementDto(
+                    advertisement.getId(),
+                    advertisement.getTitle(),
+                    advertisement.getDescription(),
+                    advertisement.getPrice(),
+                    resourceRepository.findImagesByAdvertisementId(advertisement.getId()),
+                    subcategory,
+                    seller,
+                    isSaved(user, advertisement));
+
+            adListDto.add(advertisementDto);
+        }
+
+        return adListDto;
     }
 }
