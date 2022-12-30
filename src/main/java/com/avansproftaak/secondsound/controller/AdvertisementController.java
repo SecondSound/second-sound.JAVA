@@ -48,4 +48,10 @@ public class AdvertisementController {
     public boolean saveAdvertisement(@RequestBody Long advertisementId) {
         return advertisementService.savedAdvertisementHandler(advertisementId);
     }
+
+    @GetMapping(path="user/advertisement")
+    public List<AdvertisementDto> getAllAdvertisementsUser() {
+        return advertisementService.getAllAdvertisementsUser();
+    }
+
 }

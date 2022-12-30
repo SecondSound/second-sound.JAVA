@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -186,5 +187,15 @@ public class AdvertisementService {
 
         savedAdvertisementRepository.deleteById(savedAdvertisement.getId());
         return false;
+    }
+
+    public List<AdvertisementDto> getAllAdvertisementsUser() {
+        User user = userService.getAuthenticatedUser();
+
+        List<Advertisement> userAdvertisements = advertisementRepository.findAllByUser(user);
+
+        return userAdvertisements.stream()
+                .map(obj -> modelMapper.map(obj, AdvertisementDto.class))
+                .collect(Collectors.toList());
     }
 }
