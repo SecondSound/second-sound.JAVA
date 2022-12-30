@@ -57,27 +57,8 @@ public class AdvertisementService {
 
     public List<AdvertisementDto> getAllAdvertisementsAuth() {
         var adList = advertisementRepository.findAll();
-        ArrayList<AdvertisementDto> adListDto = new ArrayList<>();
-        var user = userService.getAuthenticatedUser();
 
-        for (Advertisement advertisement : adList) {
-            var subcategory = subCategoryRepository.findById(advertisement.getSubCategory().getId())
-                    .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Subcategory unknown"));
-            var seller = userService.getSellerOrBidder(advertisement.getUser().getId());
-
-            var advertisementDto = new AdvertisementDto(
-                    advertisement.getId(),
-                    advertisement.getTitle(),
-                    advertisement.getDescription(),
-                    advertisement.getPrice(),
-                    resourceRepository.findImagesByAdvertisementId(advertisement.getId()),
-                    subcategory,
-                    seller,
-                    isSaved(user, advertisement));
-
-            adListDto.add(advertisementDto);
-        }
-        return adListDto;
+        return mapAdvertisementDto(adList);
     }
 
     public boolean isSaved(User user, Advertisement advertisement) {
@@ -194,8 +175,30 @@ public class AdvertisementService {
 
         List<Advertisement> userAdvertisements = advertisementRepository.findAllByUser(user);
 
-        return userAdvertisements.stream()
-                .map(obj -> modelMapper.map(obj, AdvertisementDto.class))
-                .collect(Collectors.toList());
+        return mapAdvertisementDto(userAdvertisements);
+    }
+
+    private List<AdvertisementDto> mapAdvertisementDto(List<Advertisement> adList) {
+        ArrayList<AdvertisementDto> adListDto = new ArrayList<>();
+
+        for (Advertisement advertisement : adList) {
+            var subcategory = subCategoryRepository.findById(advertisement.getSubCategory().getId())
+                    .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Subcategory unknown"));
+            var seller = userService.getSellerOrBidder(advertisement.getUser().getId());
+
+            var advertisementDto = new AdvertisementDto(
+                    advertisement.getId(),
+                    advertisement.getTitle(),
+                    advertisement.getDescription(),
+                    advertisement.getPrice(),
+                    resourceRepository.findImagesByAdvertisementId(advertisement.getId()),
+                    subcategory,
+                    seller,
+                    false);
+
+            adListDto.add(advertisementDto);
+        }
+
+        return adListDto;
     }
 }
