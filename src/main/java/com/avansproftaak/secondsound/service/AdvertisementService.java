@@ -180,6 +180,7 @@ public class AdvertisementService {
 
     private List<AdvertisementDto> mapAdvertisementDto(List<Advertisement> adList) {
         ArrayList<AdvertisementDto> adListDto = new ArrayList<>();
+        var user = userService.getAuthenticatedUser();
 
         for (Advertisement advertisement : adList) {
             var subcategory = subCategoryRepository.findById(advertisement.getSubCategory().getId())
@@ -194,7 +195,7 @@ public class AdvertisementService {
                     resourceRepository.findImagesByAdvertisementId(advertisement.getId()),
                     subcategory,
                     seller,
-                    false);
+                    isSaved(user, advertisement));
 
             adListDto.add(advertisementDto);
         }
