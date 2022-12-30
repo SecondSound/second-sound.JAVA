@@ -97,18 +97,33 @@ VALUES (NOW(), NOW(), NOW() + INTERVAL 1 HOUR, '88bf0629-45d3-4897-be7c-062bdf21
        (NOW(), NOW(), NOW() + INTERVAL 1 HOUR, '05bf9bf1-9580-4480-ae6f-b2bc490cdc79', 10);
 
 INSERT INTO advertisement (created_at, description, price, title, user_id, sub_category_id, is_active)
-VALUES (NOW() - INTERVAL 1544 MINUTE, '3/4 Guitar, with guitar bag backpack. Guitar gives a warm sound', 1100, 'Godin Multiac Nylon SA', 1, 44, true),
-       (NOW() - INTERVAL 1733 MINUTE, 'Great keyboard. Including textbook.', 25, 'General Music Cd1 Hyper Keyboard', 3, 39, true),
-       (NOW() - INTERVAL 1235 MINUTE, 'Professional alt-martijn saxophone model handmade, handmade from 1926, hand engraved, individually welded tone holes, re-polished with prestini brand pad in 2022, feathers replaced, working. It is shipped with a mordiba travel bag, with courier and insurance.', 1200, 'Saxophone alto handcraft', 2, 20, true),
-       (NOW() - INTERVAL 957 MINUTE, 'Now from € 525,00 for € 399,00. Free at home. Full manufacturers warranty. Delivered adjusted. Of course you can test it in our showroom of 2000m2. With 14 day money back guarantee!', 399, 'Bass guitar Sterling Sub Ray 4 black and Ray24 Butterscotch', 7, 45, true),
-       (NOW() - INTERVAL 2654 MINUTE, 'The legendary SM58® (without switch) is an industry-standard, highly versatile, cardioid, dynamic vocal microphone specially made for a warm and clear vocal reproduction. The SM58® is invariably the first choice for singing performances around the world.', 109, 'Shure | SM58 | microfoon', 9, 7, true);
+VALUES (NOW() - INTERVAL 1544 MINUTE, 'Pellentesque elit eget gravida cum sociis natoque penatibus. Ut morbi tincidunt augue interdum velit euismod in. Gravida quis blandit turpis cursus.', 1100, 'Godin Multiac Nylon SA', 1, 44, true),
+       (NOW() - INTERVAL 1733 MINUTE, 'Donec ultrices tincidunt arcu non sodales. Vitae tortor condimentum lacinia quis vel eros donec. Feugiat in fermentum posuere urna nec tincidunt praesent. ', 25, 'General Music Cd1 Hyper Keyboard', 3, 39, true),
+       (NOW() - INTERVAL 1235 MINUTE, 'Malesuada fames ac turpis egestas maecenas pharetra. Eu feugiat pretium nibh ipsum consequat nisl vel. Etiam non quam lacus suspendisse faucibus interdum posuere lorem.', 1200, 'Saxophone alto handcraft', 2, 20, true),
+       (NOW() - INTERVAL 957 MINUTE, 'Sed arcu non odio euismod lacinia at quis risus. Facilisis sed odio morbi quis commodo odio aenean. Scelerisque fermentum dui faucibus in ornare quam viverra orci sagittis. Et tortor consequat id porta nibh venenatis cras sed felis.', 399, 'Bass guitar Sterling Sub Ray 4 black and Ray24 Butterscotch', 7, 45, true),
+       (NOW() - INTERVAL 2654 MINUTE, 'Id volutpat lacus laoreet non curabitur gravida arcu ac tortor. Orci ac auctor augue mauris augue neque. Laoreet sit amet cursus sit.', 109, 'Shure | SM58 | microphone', 9, 7, true),
+       (NOW() - INTERVAL 654 MINUTE, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 450, 'Tacoma mandoline', 1, 49, true),
+       (NOW() - INTERVAL 741 MINUTE, 'Etiam erat velit scelerisque in dictum non consectetur. Pellentesque elit eget gravida cum sociis natoque penatibus. Ut morbi tincidunt augue interdum velit euismod in.', 2400,'Coolsma alto recorder 415 Hz', 3, 15, true),
+       (NOW() - INTERVAL 231 MINUTE, 'Fringilla phasellus faucibus scelerisque eleifend donec. Fermentum dui faucibus in ornare quam. Placerat vestibulum lectus mauris ultrices eros in cursus turpis. Donec ultrices tincidunt arcu non sodales.', 179, 'Fazley FSB418BK headless electric guitar black', 1, 46, true),
+       (NOW() - INTERVAL 796 MINUTE, 'Vitae tortor condimentum lacinia quis vel eros donec. Feugiat in fermentum posuere urna nec tincidunt praesent. Tincidunt nunc pulvinar sapien et ligula ullamcorper malesuada proin libero. Fusce id velit ut tortor pretium. Integer eget aliquet nibh praesent tristique magna.', 400, 'Fender redondo special MBK', 1, 44, true),
+       (NOW() - INTERVAL 985 MINUTE, 'Sodales ut eu sem integer vitae justo eget magna fermentum. Quam id leo in vitae turpis massa sed elementum tempus.', 425, '(B-Stock) Gold Tone CC-MINI Cripple Creek Mini Banjo', 1, 43, true),
+       (NOW() - INTERVAL 85 MINUTE, 'Mattis molestie a iaculis at erat pellentesque adipiscing commodo elit. Est ante in nibh mauris cursus mattis molestie a iaculis.', 8999.95, 'LED wall Lighthouse incl. processors', 6, 4, true);
+
 
 INSERT INTO resource (created_at, file_path, advertisement_id)
 VALUES (NOW(), 'https://cdn.webshopapp.com/shops/179375/files/349741130/je-akoestische-gitaar-versterken-en-opnemen.jpg', 1),
        (NOW(), 'https://www.omarimc.com/wp-content/uploads/2018/01/keyboard-2822917_1920.jpg', 2),
        (NOW(), 'https://basensax.nl/images/virtuemart/product/p1050082-1589602842.jpg', 3),
        (NOW(), 'https://i.pinimg.com/originals/fe/56/f0/fe56f0cb02a22f2a4b9813f163066d5d.jpg', 4),
-       (NOW(), 'https://medias.audiofanzine.com/images/normal/shure-sm58-876627.jpg', 5);
+       (NOW(), 'https://medias.audiofanzine.com/images/normal/shure-sm58-876627.jpg', 5),
+       (NOW(), 'https://images.reverb.com/image/upload/s--Vm3BSNKZ--/a_exif,c_limit,e_unsharp_mask:80,f_auto,fl_progressive,g_south,h_620,q_90,w_620/v1497806171/jimdsidg6easqujseb4x.jpg', 6),
+       (NOW(), 'https://www.waregem.be/sites/waregem/files/styles/half_width/public/blokfluit_0.png', 7),
+       (NOW(), 'https://images.richtonemusic.co.uk/product/YIBANEZ9293508.jpg', 8),
+       (NOW(), 'https://img.audiofanzine.com/images/u/product/normal/fender-redondo-special-2020-current-287075.jpg', 9),
+       (NOW(), 'https://images.reverb.com/image/upload/s--yBpGNgPk--/f_auto,t_large/v1536089751/g6zytpf22kg2awuygwz1.jpg', 10),
+       (NOW(), 'https://www.used.forsale/sh-img/thumbnail_led%2Bwall.jpg', 11);
+
+
 
 INSERT INTO bid (created_at, amount, advertisement_id, bidder_id)
 VALUES (NOW() - INTERVAL 1354 MINUTE, 750, 1, 7),
@@ -126,4 +141,9 @@ VALUES (NOW() - INTERVAL 1354 MINUTE, 750, 1, 7),
        (NOW() - INTERVAL 2144 MINUTE, 75, 5, 3),
        (NOW() - INTERVAL 1456 MINUTE, 85, 5, 6),
        (NOW() - INTERVAL 841 MINUTE, 89, 5, 1),
-       (NOW() - INTERVAL 142 MINUTE, 95.50, 5, 6);
+       (NOW() - INTERVAL 142 MINUTE, 95.50, 5, 6),
+       (NOW() - INTERVAL 62 MINUTE, 1000, 7, 1),
+       (NOW() - INTERVAL 12 MINUTE, 250, 9, 4),
+       (NOW() - INTERVAL 365 MINUTE, 75, 8, 2),
+       (NOW() - INTERVAL 142 MINUTE, 85, 8, 5),
+       (NOW() - INTERVAL 2144 MINUTE, 6500, 11, 4);
