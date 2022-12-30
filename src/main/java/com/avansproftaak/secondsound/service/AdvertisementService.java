@@ -30,9 +30,14 @@ public class AdvertisementService {
     private final SavedAdvertisementRepository savedAdvertisementRepository;
     private final ModelMapper modelMapper;
 
-    public List<AdvertisementDto> getAllAdvertisementsPublic() {
+    public List<AdvertisementDto> getAllAdvertisementsPublic(Optional<String> query) {
 
-        var adList = advertisementRepository.findAll();
+        List<Advertisement> adList;
+        if (query.isPresent()) {
+            adList = advertisementRepository.findAllByQuery("%"+query.get()+"%");
+        } else {
+            adList = advertisementRepository.findAll();
+        }
         ArrayList<AdvertisementDto> adListDto = new ArrayList<>();
 
         for (Advertisement advertisement : adList) {
@@ -55,8 +60,14 @@ public class AdvertisementService {
         return adListDto;
     }
 
-    public List<AdvertisementDto> getAllAdvertisementsAuth() {
-        var adList = advertisementRepository.findAll();
+    public List<AdvertisementDto> getAllAdvertisementsAuth(Optional<String> query) {
+        List<Advertisement> adList;
+        if (query.isPresent()) {
+            adList = advertisementRepository.findAllByQuery("%"+query.get()+"%");
+        } else {
+            adList = advertisementRepository.findAll();
+        }
+
 
         return mapAdvertisementDto(adList);
     }

@@ -15,4 +15,7 @@ public interface AdvertisementRepository extends JpaRepository<Advertisement, Lo
     List<Advertisement> findAllBySellerId(Long sellerId, boolean isActive);
 
     List<Advertisement> findAllByUser(User user);
+
+    @Query("SELECT a FROM Advertisement a WHERE a.description LIKE ?1 OR a.title LIKE ?1")
+    List<Advertisement> findAllByQuery(String query);
 }
