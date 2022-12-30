@@ -59,6 +59,7 @@ public class AdvertisementController {
     @GetMapping(path = "public/advertisement/seller/{id}")
     public SellerDto getSeller(@PathVariable Long id) {
         return userService.getSellerOrBidder(id);
+    }
 
     @GetMapping(path="user/advertisement")
     public List<AdvertisementDto> getAllAdvertisementsUser() {

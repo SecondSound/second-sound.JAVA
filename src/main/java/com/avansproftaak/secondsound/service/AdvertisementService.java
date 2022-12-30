@@ -39,6 +39,7 @@ public class AdvertisementService {
         } else {
             adList = advertisementRepository.findAll();
         }
+
         ArrayList<AdvertisementDto> adListDto = new ArrayList<>();
 
         for (Advertisement advertisement : adList) {
