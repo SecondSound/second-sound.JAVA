@@ -4,8 +4,11 @@ import com.avansproftaak.secondsound.dto.AdvertisementData;
 import com.avansproftaak.secondsound.dto.AdvertisementDto;
 import com.avansproftaak.secondsound.service.AdvertisementService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.lang.Nullable;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
+import java.util.Optional;
 
 
 @RestController
@@ -20,13 +23,13 @@ public class AdvertisementController {
     }
 
     @GetMapping(path="public/advertisement")
-    public List<AdvertisementDto> getAllAdvertisementsPublic() {
-        return advertisementService.getAllAdvertisementsPublic();
+    public List<AdvertisementDto> getAllAdvertisementsPublic(@RequestParam("query") @Nullable Optional<String> query) {
+        return advertisementService.getAllAdvertisementsPublic(query);
     }
 
     @GetMapping(path="advertisement")
-    public List<AdvertisementDto> getAllAdvertisementsAuth() {
-        return advertisementService.getAllAdvertisementsAuth();
+    public List<AdvertisementDto> getAllAdvertisementsAuth(@RequestParam("query") @Nullable Optional<String> query) {
+        return advertisementService.getAllAdvertisementsAuth(query);
     }
 
     @GetMapping(path="public/advertisement/{id}")
