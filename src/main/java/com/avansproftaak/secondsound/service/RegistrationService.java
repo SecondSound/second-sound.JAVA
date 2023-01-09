@@ -38,7 +38,7 @@ public class RegistrationService {
         boolean isValidPassword = passwordValidator.test(request.getPassword());
 
         if (!isValidEmail) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "E-mail adres " + email + " is invalid.");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "E-mail address " + email + " is invalid.");
         }
 
         if (!isValidPassword) {
