@@ -10,6 +10,7 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @EqualsAndHashCode
 @ToString
+@Setter
 public class AdvertisementData {
 
     private String title;
