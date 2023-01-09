@@ -73,15 +73,15 @@ VALUES (1, 'Audio | Professional', NOW(), 1),
 
 INSERT INTO users (first_name, last_name, street, house_number, postal_code, city, country, phone_number, iban, email, password, user_role, enabled, locked, created_at)
 VALUES ('John','Doe','Veemarktstraat','12','4811ZJ','Breda','Nederland','+31618588947','NL12INGB047583365','john.doe@gmail.com','$2a$10$J1cVbLW4.wDH.oydt1R3Gupx0qb3mw885FfLNE8U5Oz2Rc.YFbmry','USER', true, false, NOW() - INTERVAL 5 DAY),
-       ('Bart','Grootoonk','Stationsstraat','47','5867HH','Tilburg','Nederland','+31676893445','NL23ABNA083465899','bart.grootoonk@email.com','$2a$10$nIko989EJDWtb4f9jNnrdekCrLv88.rl1I.v/spnsudQSw7VY6mdy','USER', true, false, NOW() - INTERVAL 5 DAY),
-       ('Johan','de Visser','Zuidermarkt','7C','2298HK','Groningen','Nederland','+31623354789','NL12INGB014365578','johandevisser@live.nl','$2a$10$J1cVbLW4.wDH.oydt1R3Gupx0qb3mw885FfLNE8U5Oz2Rc.YFbmry','USER', true, false, NOW() - INTERVAL 5 DAY),
-       ('Berend','Wolfstra','Beverweg','156','8766UO','Breda','Nederland','+31615477998','NL63RABO043667890','berendwolfstra@yahoo.com','$2a$10$J1cVbLW4.wDH.oydt1R3Gupx0qb3mw885FfLNE8U5Oz2Rc.YFbmry','USER', true, false, NOW() - INTERVAL 5 DAY),
-       ('Kees','van Dongen','Parelsebaan','2','2857TY','Eindhoven','Nederland','+31665877034','NL12INGB031224567','kees.vandongen@hetnet.nl','$2a$10$J1cVbLW4.wDH.oydt1R3Gupx0qb3mw885FfLNE8U5Oz2Rc.YFbmry','USER', true, false, NOW() - INTERVAL 5 DAY),
-       ('Merel','van Laren','Poolseweg','48D','6755JQ','Breda','Nederland','+31664855136','NL12INGB078695722','merelvanlaren@gmail.com','$2a$10$J1cVbLW4.wDH.oydt1R3Gupx0qb3mw885FfLNE8U5Oz2Rc.YFbmry','USER', true, false, NOW() - INTERVAL 5 DAY),
-       ('Sofia','Bulgara','Torenstraat','18','4758UY','Amsterdam','Nederland','+31618675075','NL63RABO027586957','sofiabulgara@hotmail.com','$2a$10$J1cVbLW4.wDH.oydt1R3Gupx0qb3mw885FfLNE8U5Oz2Rc.YFbmry','USER', true, false, NOW() - INTERVAL 5 DAY),
-       ('Ronald','Peyger','Dubbelsebaan','23','9273SO','Maastricht','Nederland','+31639687961','NL12INGB011334657','ronaldpeyger@gmail.com','$2a$10$J1cVbLW4.wDH.oydt1R3Gupx0qb3mw885FfLNE8U5Oz2Rc.YFbmry','USER', true, false, NOW() - INTERVAL 5 DAY),
-       ('Ruud','Klozel','John F. Kennedylaan','112','3968GJ','Tilburg','Nederland','+31618477689','NL23ABNA047565767','ruudklozel@gmail.com','$2a$10$J1cVbLW4.wDH.oydt1R3Gupx0qb3mw885FfLNE8U5Oz2Rc.YFbmry','USER', true, false, NOW() - INTERVAL 5 DAY),
-       ('Bas','de Ruyter','Ginnekenweg','34','4812BK','Breda','Nederland','+31634355789','NL12INGB044879685','basderuyter@gmail.com','$2a$10$nIko989EJDWtb4f9jNnrdekCrLv88.rl1I.v/spnsudQSw7VY6mdy','USER', true, false, NOW() - INTERVAL 5 DAY);
+       ('Bart','Grootoonk','Statenweg','72','3039JK','Rotterdam','Nederland','+31676893445','NL23ABNA083465899','bart.grootoonk@email.com','$2a$10$nIko989EJDWtb4f9jNnrdekCrLv88.rl1I.v/spnsudQSw7VY6mdy','USER', true, false, NOW() - INTERVAL 5 DAY),
+       ('Johan','de Visser','Professor Kranenburglaan','7','3741EP','Baarn','Nederland','+31623354789','NL12INGB014365578','johandevisser@live.nl','$2a$10$J1cVbLW4.wDH.oydt1R3Gupx0qb3mw885FfLNE8U5Oz2Rc.YFbmry','USER', true, false, NOW() - INTERVAL 5 DAY),
+       ('Berend','Wolfstra','Schaapsweg','71','6713BB','Ede','Nederland','+31615477998','NL63RABO043667890','berendwolfstra@yahoo.com','$2a$10$J1cVbLW4.wDH.oydt1R3Gupx0qb3mw885FfLNE8U5Oz2Rc.YFbmry','USER', true, false, NOW() - INTERVAL 5 DAY),
+       ('Kees','van Dongen','Zeelelieweg ','51','4325BV','Renesse','Nederland','+31665877034','NL12INGB031224567','kees.vandongen@hetnet.nl','$2a$10$J1cVbLW4.wDH.oydt1R3Gupx0qb3mw885FfLNE8U5Oz2Rc.YFbmry','USER', true, false, NOW() - INTERVAL 5 DAY),
+       ('Merel','van Laren','Straatje van Anna Cramer','70','2033RZ','Haarlem','Nederland','+31664855136','NL12INGB078695722','merelvanlaren@gmail.com','$2a$10$J1cVbLW4.wDH.oydt1R3Gupx0qb3mw885FfLNE8U5Oz2Rc.YFbmry','USER', true, false, NOW() - INTERVAL 5 DAY),
+       ('Sofia','Bulgara','De Gast','63','9801AA','Groningen','Nederland','+31618675075','NL63RABO027586957','sofiabulgara@hotmail.com','$2a$10$J1cVbLW4.wDH.oydt1R3Gupx0qb3mw885FfLNE8U5Oz2Rc.YFbmry','USER', true, false, NOW() - INTERVAL 5 DAY),
+       ('Ronald','Peyger','Ootmarsumsestraat','141','7634PN','Tilligte','Nederland','+31639687961','NL12INGB011334657','ronaldpeyger@gmail.com','$2a$10$J1cVbLW4.wDH.oydt1R3Gupx0qb3mw885FfLNE8U5Oz2Rc.YFbmry','USER', true, false, NOW() - INTERVAL 5 DAY),
+       ('Ruud','Klozel','Frans Duwaerstraat','191','1318AD','Almere','Nederland','+31618477689','NL23ABNA047565767','ruudklozel@gmail.com','$2a$10$J1cVbLW4.wDH.oydt1R3Gupx0qb3mw885FfLNE8U5Oz2Rc.YFbmry','USER', true, false, NOW() - INTERVAL 5 DAY),
+       ('Bas','de Ruyter','Tjalkstraat','70','5301VV','Zaltbommel','Nederland','+31634355789','NL12INGB044879685','basderuyter@gmail.com','$2a$10$nIko989EJDWtb4f9jNnrdekCrLv88.rl1I.v/spnsudQSw7VY6mdy','USER', true, false, NOW() - INTERVAL 5 DAY);
 
 
 INSERT INTO confirmation_token (confirmed_at, created_at, expired_at, token, user_id)
@@ -97,18 +97,33 @@ VALUES (NOW(), NOW(), NOW() + INTERVAL 1 HOUR, '88bf0629-45d3-4897-be7c-062bdf21
        (NOW(), NOW(), NOW() + INTERVAL 1 HOUR, '05bf9bf1-9580-4480-ae6f-b2bc490cdc79', 10);
 
 INSERT INTO advertisement (created_at, description, price, title, user_id, sub_category_id, is_active)
-VALUES (NOW() - INTERVAL 1544 MINUTE, '3/4 Guitar, with guitar bag backpack. Guitar gives a warm sound', 1100, 'Godin Multiac Nylon SA', 1, 44, true),
-       (NOW() - INTERVAL 1733 MINUTE, 'Great keyboard. Including textbook.', 25, 'General Music Cd1 Hyper Keyboard', 3, 39, true),
-       (NOW() - INTERVAL 1235 MINUTE, 'Professional alt-martijn saxophone model handmade, handmade from 1926, hand engraved, individually welded tone holes, re-polished with prestini brand pad in 2022, feathers replaced, working. It is shipped with a mordiba travel bag, with courier and insurance.', 1200, 'Saxophone alto handcraft', 2, 20, true),
-       (NOW() - INTERVAL 957 MINUTE, 'Now from € 525,00 for € 399,00. Free at home. Full manufacturers warranty. Delivered adjusted. Of course you can test it in our showroom of 2000m2. With 14 day money back guarantee!', 399, 'Bass guitar Sterling Sub Ray 4 black and Ray24 Butterscotch', 7, 45, true),
-       (NOW() - INTERVAL 2654 MINUTE, 'The legendary SM58® (without switch) is an industry-standard, highly versatile, cardioid, dynamic vocal microphone specially made for a warm and clear vocal reproduction. The SM58® is invariably the first choice for singing performances around the world.', 109, 'Shure | SM58 | microfoon', 9, 7, true);
+VALUES (NOW() - INTERVAL 1544 MINUTE, 'Pellentesque elit eget gravida cum sociis natoque penatibus. Ut morbi tincidunt augue interdum velit euismod in. Gravida quis blandit turpis cursus.', 1100, 'Godin Multiac Nylon SA', 1, 44, true),
+       (NOW() - INTERVAL 1733 MINUTE, 'Donec ultrices tincidunt arcu non sodales. Vitae tortor condimentum lacinia quis vel eros donec. Feugiat in fermentum posuere urna nec tincidunt praesent. ', 25, 'General Music Cd1 Hyper Keyboard', 3, 39, true),
+       (NOW() - INTERVAL 1235 MINUTE, 'Malesuada fames ac turpis egestas maecenas pharetra. Eu feugiat pretium nibh ipsum consequat nisl vel. Etiam non quam lacus suspendisse faucibus interdum posuere lorem.', 1200, 'Saxophone alto handcraft', 2, 20, true),
+       (NOW() - INTERVAL 957 MINUTE, 'Sed arcu non odio euismod lacinia at quis risus. Facilisis sed odio morbi quis commodo odio aenean. Scelerisque fermentum dui faucibus in ornare quam viverra orci sagittis. Et tortor consequat id porta nibh venenatis cras sed felis.', 399, 'Bass guitar Sterling Sub Ray 4 black and Ray24 Butterscotch', 7, 45, true),
+       (NOW() - INTERVAL 2654 MINUTE, 'Id volutpat lacus laoreet non curabitur gravida arcu ac tortor. Orci ac auctor augue mauris augue neque. Laoreet sit amet cursus sit.', 109, 'Shure | SM58 | microphone', 9, 7, true),
+       (NOW() - INTERVAL 654 MINUTE, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 450, 'Tacoma mandoline', 1, 49, true),
+       (NOW() - INTERVAL 741 MINUTE, 'Etiam erat velit scelerisque in dictum non consectetur. Pellentesque elit eget gravida cum sociis natoque penatibus. Ut morbi tincidunt augue interdum velit euismod in.', 2400,'Coolsma alto recorder 415 Hz', 3, 15, true),
+       (NOW() - INTERVAL 231 MINUTE, 'Fringilla phasellus faucibus scelerisque eleifend donec. Fermentum dui faucibus in ornare quam. Placerat vestibulum lectus mauris ultrices eros in cursus turpis. Donec ultrices tincidunt arcu non sodales.', 179, 'Fazley FSB418BK headless electric guitar black', 1, 46, true),
+       (NOW() - INTERVAL 796 MINUTE, 'Vitae tortor condimentum lacinia quis vel eros donec. Feugiat in fermentum posuere urna nec tincidunt praesent. Tincidunt nunc pulvinar sapien et ligula ullamcorper malesuada proin libero. Fusce id velit ut tortor pretium. Integer eget aliquet nibh praesent tristique magna.', 400, 'Fender redondo special MBK', 1, 44, true),
+       (NOW() - INTERVAL 985 MINUTE, 'Sodales ut eu sem integer vitae justo eget magna fermentum. Quam id leo in vitae turpis massa sed elementum tempus.', 425, '(B-Stock) Gold Tone CC-MINI Cripple Creek Mini Banjo', 1, 43, true),
+       (NOW() - INTERVAL 85 MINUTE, 'Mattis molestie a iaculis at erat pellentesque adipiscing commodo elit. Est ante in nibh mauris cursus mattis molestie a iaculis.', 8999.95, 'LED wall Lighthouse incl. processors', 6, 4, true);
+
 
 INSERT INTO resource (created_at, file_path, advertisement_id)
 VALUES (NOW(), 'https://cdn.webshopapp.com/shops/179375/files/349741130/je-akoestische-gitaar-versterken-en-opnemen.jpg', 1),
        (NOW(), 'https://www.omarimc.com/wp-content/uploads/2018/01/keyboard-2822917_1920.jpg', 2),
        (NOW(), 'https://basensax.nl/images/virtuemart/product/p1050082-1589602842.jpg', 3),
        (NOW(), 'https://i.pinimg.com/originals/fe/56/f0/fe56f0cb02a22f2a4b9813f163066d5d.jpg', 4),
-       (NOW(), 'https://medias.audiofanzine.com/images/normal/shure-sm58-876627.jpg', 5);
+       (NOW(), 'https://medias.audiofanzine.com/images/normal/shure-sm58-876627.jpg', 5),
+       (NOW(), 'https://images.reverb.com/image/upload/s--Vm3BSNKZ--/a_exif,c_limit,e_unsharp_mask:80,f_auto,fl_progressive,g_south,h_620,q_90,w_620/v1497806171/jimdsidg6easqujseb4x.jpg', 6),
+       (NOW(), 'https://www.waregem.be/sites/waregem/files/styles/half_width/public/blokfluit_0.png', 7),
+       (NOW(), 'https://images.richtonemusic.co.uk/product/YIBANEZ9293508.jpg', 8),
+       (NOW(), 'https://img.audiofanzine.com/images/u/product/normal/fender-redondo-special-2020-current-287075.jpg', 9),
+       (NOW(), 'https://images.reverb.com/image/upload/s--yBpGNgPk--/f_auto,t_large/v1536089751/g6zytpf22kg2awuygwz1.jpg', 10),
+       (NOW(), 'https://www.used.forsale/sh-img/thumbnail_led%2Bwall.jpg', 11);
+
+
 
 INSERT INTO chat (created_at, advertisement_id, sender_id, receiver_id)
 VALUES (NOW(), 1, 11, 2),
@@ -141,4 +156,9 @@ VALUES (NOW() - INTERVAL 1354 MINUTE, 750, 1, 7),
        (NOW() - INTERVAL 2144 MINUTE, 75, 5, 3),
        (NOW() - INTERVAL 1456 MINUTE, 85, 5, 6),
        (NOW() - INTERVAL 841 MINUTE, 89, 5, 1),
-       (NOW() - INTERVAL 142 MINUTE, 95.50, 5, 6);
+       (NOW() - INTERVAL 142 MINUTE, 95.50, 5, 6),
+       (NOW() - INTERVAL 62 MINUTE, 1000, 7, 1),
+       (NOW() - INTERVAL 12 MINUTE, 250, 9, 4),
+       (NOW() - INTERVAL 365 MINUTE, 75, 8, 2),
+       (NOW() - INTERVAL 142 MINUTE, 85, 8, 5),
+       (NOW() - INTERVAL 2144 MINUTE, 6500, 11, 4);

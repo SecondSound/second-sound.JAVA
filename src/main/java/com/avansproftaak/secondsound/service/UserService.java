@@ -152,9 +152,11 @@ public class UserService implements UserDetailsService {
                 user.getId(),
                 user.getFirstName(),
                 user.getLastName(),
+                user.getStreet(),
                 user.getCity(),
                 user.getPhoneNumber(),
                 user.getEmail(),
                 activeAdvertisementDtoList);
     }
+
 }

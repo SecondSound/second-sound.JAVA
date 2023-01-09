@@ -14,6 +14,7 @@ public class SellerDto {
     private Long id;
     private String firstName;
     private String lastName;
+    private String street;
     private String city;
     private String phoneNumber;
     private String email;
