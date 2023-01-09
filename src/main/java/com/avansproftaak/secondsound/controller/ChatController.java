@@ -46,6 +46,12 @@ import java.util.UUID;
             return chatService.getAllChats();
         }
 
+        @GetMapping(path="chat/{id}")
+        public ChatDto findChatById(@PathVariable Long id) {
+            System.out.println("hit with id" + id);
+            return chatService.getChatById(id);
+        }
+
         @PostMapping(path = "chat")
         public ChatDto AddChat(@RequestBody Chat chat) {
 

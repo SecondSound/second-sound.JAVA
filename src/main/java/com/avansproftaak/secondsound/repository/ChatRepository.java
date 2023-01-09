@@ -1,14 +1,9 @@
 package com.avansproftaak.secondsound.repository;
 
-import com.avansproftaak.secondsound.dto.ChatDto;
-import com.avansproftaak.secondsound.model.Advertisement;
 import com.avansproftaak.secondsound.model.Chat;
 import com.avansproftaak.secondsound.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Modifying;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -20,4 +15,5 @@ public interface ChatRepository extends JpaRepository<Chat, Long> {
     List<Chat> findBySenderOrReceiver(User user1, User user2);
 
 
+    Optional<Chat> findById(Long id);
 }

@@ -37,6 +37,8 @@ public class MessageController {
 
     @GetMapping(path="public/message/{id}")
     public List<Message> getMessagesByChat(@PathVariable Long id) {
+
+
         return messageService.getMessagesByChat(id);
     }
 

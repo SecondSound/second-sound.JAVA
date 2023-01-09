@@ -14,6 +14,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -49,11 +50,18 @@ public class ChatService {
 
     public ChatDto getChat(Chat chat) {
 
-        return new ChatDto(
-                chat.getId(),
-                advertisementService.getAdvertisement(chat.getAdvertisement()),
-                chat.getSender(),
-                chat.getReceiver());
+        User user = userService.getAuthenticatedUser();
+
+        if ((chat.getSender() == user) || (chat.getReceiver() == user )){
+            return new ChatDto(
+                    chat.getId(),
+                    advertisementService.getAdvertisement(chat.getAdvertisement()),
+                    chat.getSender(),
+                    chat.getReceiver());
+        } else {
+            return new ChatDto();
+
+        }
     }
 
     public ChatDto addChat(Chat chat) {
@@ -67,6 +75,23 @@ public class ChatService {
     }
 
 
+    public ChatDto getChatById(Long id) {
+        System.out.println("hit");
+        Chat chat = chatRepository.findById(id).orElse(null);
+        System.out.println("create dto");
+        System.out.println(chat.getAdvertisement());
+        AdvertisementDto add = advertisementService.getAdvertisement(chat.getAdvertisement());
+        System.out.println("add " + add);
+        ChatDto chatDto = new ChatDto(
+                chat.getId(),
+                add,
+                chat.getSender(),
+                chat.getReceiver()
+
+        );
+        System.out.println("return dto");
+        return chatDto;
+    }
 }
 
 
