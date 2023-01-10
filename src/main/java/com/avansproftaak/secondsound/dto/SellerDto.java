@@ -18,5 +18,6 @@ public class SellerDto {
     private String city;
     private String phoneNumber;
     private String email;
+    private Float rating;
     private List<AdvertisementDto> advertisements;
 }

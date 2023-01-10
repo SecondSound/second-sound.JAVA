@@ -36,6 +36,8 @@ public class UserService implements UserDetailsService {
     private final EmailValidator emailValidator;
     private final UserValidator userValidator;
 
+    private final RatingService ratingService;
+
     @Override
     public UserDetails loadUserByUsername(String email) throws ResponseStatusException {
         return userRepository.findByEmail(email).orElseThrow(() ->
@@ -156,6 +158,7 @@ public class UserService implements UserDetailsService {
                 user.getCity(),
                 user.getPhoneNumber(),
                 user.getEmail(),
+                ratingService.getSellerRating(user),
                 activeAdvertisementDtoList);
     }
 

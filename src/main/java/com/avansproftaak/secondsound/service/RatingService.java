@@ -16,15 +16,18 @@ import java.util.stream.Collectors;
 public class RatingService {
 
     private final RatingRepository ratingRepository;
-    private final UserService userService;
     private final ModelMapper modelmapper;
 
-    public List<RatingDto> getUserRatings() {
-        User user = userService.getAuthenticatedUser();
+    public List<RatingDto> getUserRatings(User user) {
 
         return ratingRepository.findAllByRater(user)
                 .stream()
                 .map(obj -> modelmapper.map(obj, RatingDto.class))
                 .collect(Collectors.toList());
+    }
+
+    public Float getSellerRating(User user) {
+        List<Integer> ratings = ratingRepository.findAllByUser(user);
+        return (float)ratings.stream().mapToInt(Integer::intValue).sum() / ratings.size();
     }
 }

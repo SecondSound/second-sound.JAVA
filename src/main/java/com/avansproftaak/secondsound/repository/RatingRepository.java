@@ -10,7 +10,7 @@ import java.util.List;
 public interface RatingRepository extends JpaRepository<Rating, Long> {
 
     @Query("SELECT r.rating FROM Rating r WHERE r.user =?1")
-    List<Rating> findAllByUser(User user);
+    List<Integer> findAllByUser(User user);
 
     @Query("SELECT r FROM Rating r WHERE r.ratedByUser =?1")
     List<Rating> findAllByRater(User user);
