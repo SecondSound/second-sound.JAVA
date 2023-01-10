@@ -28,7 +28,6 @@ public class ChatService {
     public List<ChatDto> getAllChats() {
         User user = userService.getAuthenticatedUser();
 
-        System.out.println(user.getId());
         var chats = chatRepository.findBySenderOrReceiver(user,user);
         ArrayList<ChatDto> chatsDtoList = new ArrayList<>();
 
@@ -67,7 +66,16 @@ public class ChatService {
     public ChatDto addChat(Chat chat) {
 
         User user = userService.getAuthenticatedUser();
-//        todo: if chat exist go to chat
+//        if chat exist go to chat
+
+        var chats = chatRepository.findBySenderOrReceiver(user,user);
+
+        for (Chat existingChat : chats){
+            if ((existingChat.getAdvertisement() == chat.getAdvertisement()) && (existingChat.getSender() == chat.getSender()) && (existingChat.getReceiver() == chat.getReceiver())){
+                return  getChat(existingChat);
+            }
+        }
+
         Chat newChat = new Chat(chat.getAdvertisement(), chat.getSender(), chat.getReceiver());
         chatRepository.save(newChat);
 
@@ -76,12 +84,10 @@ public class ChatService {
 
 
     public ChatDto getChatById(Long id) {
-        System.out.println("hit");
+
         Chat chat = chatRepository.findById(id).orElse(null);
-        System.out.println("create dto");
-        System.out.println(chat.getAdvertisement());
         AdvertisementDto add = advertisementService.getAdvertisement(chat.getAdvertisement());
-        System.out.println("add " + add);
+
         ChatDto chatDto = new ChatDto(
                 chat.getId(),
                 add,
@@ -89,7 +95,7 @@ public class ChatService {
                 chat.getReceiver()
 
         );
-        System.out.println("return dto");
+
         return chatDto;
     }
 }
