@@ -5,8 +5,9 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -14,33 +15,33 @@ import java.time.LocalDateTime;
 @ToString
 @Getter
 @Setter
-public class Message {
+public class Chat {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
-    private Long chatId;
-
-    @NotNull
-    private String message;
-
     @ManyToOne
     @JoinColumn(nullable = false)
+    private Advertisement advertisement;
+
+    @OneToOne
+    @JoinColumn(nullable = true)
     private User sender;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(nullable = true)
     private User receiver;
+
 
     @CreationTimestamp
     private LocalDateTime createdAt;
 
-    public Message(Long chatId,String message, User sender, User receiver) {
-        this.chatId = chatId;
-        this.message = message;
+    public Chat(Advertisement advertisement, User sender, User receiver) {
+        this.advertisement = advertisement;
         this.sender = sender;
         this.receiver = receiver;
     }
+
+
 }
