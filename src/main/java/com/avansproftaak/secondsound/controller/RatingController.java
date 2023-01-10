@@ -1,5 +1,6 @@
 package com.avansproftaak.secondsound.controller;
 
+import com.avansproftaak.secondsound.dto.PostRatingDto;
 import com.avansproftaak.secondsound.dto.RatingDto;
 import com.avansproftaak.secondsound.model.Rating;
 import com.avansproftaak.secondsound.model.User;
@@ -35,5 +36,11 @@ public class RatingController {
     public ResponseEntity<String> deleteRating(@PathVariable("id") Long id) {
         User user = userService.getAuthenticatedUser();
         return this.ratingService.deleteRating(id, user);
+    }
+
+    @PostMapping
+    public ResponseEntity<RatingDto> postRating(@RequestBody PostRatingDto rating) {
+        User user = userService.getAuthenticatedUser();
+        return this.ratingService.createRating(rating, user);
     }
 }
