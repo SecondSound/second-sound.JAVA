@@ -79,6 +79,8 @@ public class ChatService {
         Chat newChat = new Chat(chat.getAdvertisement(), chat.getSender(), chat.getReceiver());
         chatRepository.save(newChat);
 
+        System.out.println(newChat);
+
         return getChat(newChat);
     }
 
