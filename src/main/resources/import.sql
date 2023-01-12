@@ -126,9 +126,9 @@ VALUES (NOW(), 'https://cdn.webshopapp.com/shops/179375/files/349741130/je-akoes
 
 
 INSERT INTO chat (created_at, advertisement_id, sender_id, receiver_id)
-VALUES (NOW(), 1, 11, 2),
+VALUES (NOW(), 1, 1, 2),
        (NOW(), 2, 3, 4),
-       (NOW(), 4, 2, 11);
+       (NOW(), 4, 2, 1);
 
 INSERT INTO message (created_at, message, chat_id, sender_id, receiver_id)
 VALUES (NOW(), "test message", 1, 1, 2),
