@@ -72,16 +72,16 @@ VALUES (1, 'Audio | Professional', NOW(), 1),
 
 
 INSERT INTO users (first_name, last_name, street, house_number, postal_code, city, country, phone_number, iban, email, password, user_role, enabled, locked, created_at)
-VALUES ('John','Doe','Veemarktstraat','12','4811ZJ','Breda','Nederland','+31618588947','NL12INGB047583365','john.doe@gmail.com','$2a$10$J1cVbLW4.wDH.oydt1R3Gupx0qb3mw885FfLNE8U5Oz2Rc.YFbmry','USER', true, false, NOW() - INTERVAL 5 DAY),
-       ('Bart','Grootoonk','Statenweg','72','3039JK','Rotterdam','Nederland','+31676893445','NL23ABNA083465899','bart.grootoonk@email.com','$2a$10$nIko989EJDWtb4f9jNnrdekCrLv88.rl1I.v/spnsudQSw7VY6mdy','USER', true, false, NOW() - INTERVAL 5 DAY),
-       ('Johan','de Visser','Professor Kranenburglaan','7','3741EP','Baarn','Nederland','+31623354789','NL12INGB014365578','johandevisser@live.nl','$2a$10$J1cVbLW4.wDH.oydt1R3Gupx0qb3mw885FfLNE8U5Oz2Rc.YFbmry','USER', true, false, NOW() - INTERVAL 5 DAY),
-       ('Berend','Wolfstra','Schaapsweg','71','6713BB','Ede','Nederland','+31615477998','NL63RABO043667890','berendwolfstra@yahoo.com','$2a$10$J1cVbLW4.wDH.oydt1R3Gupx0qb3mw885FfLNE8U5Oz2Rc.YFbmry','USER', true, false, NOW() - INTERVAL 5 DAY),
-       ('Kees','van Dongen','Zeelelieweg ','51','4325BV','Renesse','Nederland','+31665877034','NL12INGB031224567','kees.vandongen@hetnet.nl','$2a$10$J1cVbLW4.wDH.oydt1R3Gupx0qb3mw885FfLNE8U5Oz2Rc.YFbmry','USER', true, false, NOW() - INTERVAL 5 DAY),
-       ('Merel','van Laren','Straatje van Anna Cramer','70','2033RZ','Haarlem','Nederland','+31664855136','NL12INGB078695722','merelvanlaren@gmail.com','$2a$10$J1cVbLW4.wDH.oydt1R3Gupx0qb3mw885FfLNE8U5Oz2Rc.YFbmry','USER', true, false, NOW() - INTERVAL 5 DAY),
-       ('Sofia','Bulgara','De Gast','63','9801AA','Groningen','Nederland','+31618675075','NL63RABO027586957','sofiabulgara@hotmail.com','$2a$10$J1cVbLW4.wDH.oydt1R3Gupx0qb3mw885FfLNE8U5Oz2Rc.YFbmry','USER', true, false, NOW() - INTERVAL 5 DAY),
-       ('Ronald','Peyger','Ootmarsumsestraat','141','7634PN','Tilligte','Nederland','+31639687961','NL12INGB011334657','ronaldpeyger@gmail.com','$2a$10$J1cVbLW4.wDH.oydt1R3Gupx0qb3mw885FfLNE8U5Oz2Rc.YFbmry','USER', true, false, NOW() - INTERVAL 5 DAY),
-       ('Ruud','Klozel','Frans Duwaerstraat','191','1318AD','Almere','Nederland','+31618477689','NL23ABNA047565767','ruudklozel@gmail.com','$2a$10$J1cVbLW4.wDH.oydt1R3Gupx0qb3mw885FfLNE8U5Oz2Rc.YFbmry','USER', true, false, NOW() - INTERVAL 5 DAY),
-       ('Bas','de Ruyter','Tjalkstraat','70','5301VV','Zaltbommel','Nederland','+31634355789','NL12INGB044879685','basderuyter@gmail.com','$2a$10$nIko989EJDWtb4f9jNnrdekCrLv88.rl1I.v/spnsudQSw7VY6mdy','USER', true, false, NOW() - INTERVAL 5 DAY);
+VALUES ('John','Doe','Veemarktstraat','12','4811ZJ','Breda','Nederland','+31618588947','NL12***********65','john.doe@gmail.com','$2a$10$J1cVbLW4.wDH.oydt1R3Gupx0qb3mw885FfLNE8U5Oz2Rc.YFbmry','USER', true, false, NOW() - INTERVAL 5 DAY),
+       ('Bart','Grootoonk','Statenweg','72','3039JK','Rotterdam','Nederland','+31676893445','NL2***********99','bart.grootoonk@email.com','$2a$10$nIko989EJDWtb4f9jNnrdekCrLv88.rl1I.v/spnsudQSw7VY6mdy','USER', true, false, NOW() - INTERVAL 5 DAY),
+       ('Johan','de Visser','Professor Kranenburglaan','7','3741EP','Baarn','Nederland','+31623354789','NL12***********78','johandevisser@live.nl','$2a$10$J1cVbLW4.wDH.oydt1R3Gupx0qb3mw885FfLNE8U5Oz2Rc.YFbmry','USER', true, false, NOW() - INTERVAL 5 DAY),
+       ('Berend','Wolfstra','Schaapsweg','71','6713BB','Ede','Nederland','+31615477998','NL63***********90','berendwolfstra@yahoo.com','$2a$10$J1cVbLW4.wDH.oydt1R3Gupx0qb3mw885FfLNE8U5Oz2Rc.YFbmry','USER', true, false, NOW() - INTERVAL 5 DAY),
+       ('Kees','van Dongen','Zeelelieweg ','51','4325BV','Renesse','Nederland','+31665877034','NL12***********67','kees.vandongen@hetnet.nl','$2a$10$J1cVbLW4.wDH.oydt1R3Gupx0qb3mw885FfLNE8U5Oz2Rc.YFbmry','USER', true, false, NOW() - INTERVAL 5 DAY),
+       ('Merel','van Laren','Straatje van Anna Cramer','70','2033RZ','Haarlem','Nederland','+31664855136','NL12***********22','merelvanlaren@gmail.com','$2a$10$J1cVbLW4.wDH.oydt1R3Gupx0qb3mw885FfLNE8U5Oz2Rc.YFbmry','USER', true, false, NOW() - INTERVAL 5 DAY),
+       ('Sofia','Bulgara','De Gast','63','9801AA','Groningen','Nederland','+31618675075','NL63***********57','sofiabulgara@hotmail.com','$2a$10$J1cVbLW4.wDH.oydt1R3Gupx0qb3mw885FfLNE8U5Oz2Rc.YFbmry','USER', true, false, NOW() - INTERVAL 5 DAY),
+       ('Ronald','Peyger','Ootmarsumsestraat','141','7634PN','Tilligte','Nederland','+31639687961','NL12***********57','ronaldpeyger@gmail.com','$2a$10$J1cVbLW4.wDH.oydt1R3Gupx0qb3mw885FfLNE8U5Oz2Rc.YFbmry','USER', true, false, NOW() - INTERVAL 5 DAY),
+       ('Ruud','Klozel','Frans Duwaerstraat','191','1318AD','Almere','Nederland','+31618477689','NL23***********67','ruudklozel@gmail.com','$2a$10$J1cVbLW4.wDH.oydt1R3Gupx0qb3mw885FfLNE8U5Oz2Rc.YFbmry','USER', true, false, NOW() - INTERVAL 5 DAY),
+       ('Bas','de Ruyter','Tjalkstraat','70','5301VV','Zaltbommel','Nederland','+31634355789','NL12***********85','basderuyter@gmail.com','$2a$10$nIko989EJDWtb4f9jNnrdekCrLv88.rl1I.v/spnsudQSw7VY6mdy','USER', true, false, NOW() - INTERVAL 5 DAY);
 
 
 INSERT INTO confirmation_token (confirmed_at, created_at, expired_at, token, user_id)
