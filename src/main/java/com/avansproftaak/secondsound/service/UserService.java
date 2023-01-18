@@ -107,6 +107,7 @@ public class UserService implements UserDetailsService {
         }
 
         userValidator.validateUser(firstName, lastName, street, houseNumber, city, country, phoneNumber, iban);
+        String anonimyzedIban = anonimyzeIban(iban);
 
         user.setFirstName(firstName);
         user.setLastName(lastName);
@@ -115,7 +116,7 @@ public class UserService implements UserDetailsService {
         user.setCity(city);
         user.setCountry(country);
         user.setPhoneNumber(phoneNumber);
-        user.setIban(iban);
+        user.setIban(anonimyzedIban);
         user.setEmail(email);
         user.setPostalCode(postalCode);
 
@@ -162,4 +163,10 @@ public class UserService implements UserDetailsService {
                 activeAdvertisementDtoList);
     }
 
+    private String anonimyzeIban(String iban) {
+        String start = iban.substring(0,4);
+        String end = iban.substring(iban.length() - 2);
+
+        return start + "***********" + end;
+    }
 }
