@@ -84,7 +84,7 @@ public class AdvertisementService {
         SubCategory subCategory = subCategoryRepository.findById(advertisement.getSubCategoryId().longValue())
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Subcategory unknown"));
 
-        Advertisement newAdvertisement = new Advertisement(advertisement.getTitle(), advertisement.getDescription(), currencyPrice, subCategory, user, advertisement.isActive());
+        Advertisement newAdvertisement = new Advertisement(advertisement.getTitle(), advertisement.getDescription(), currencyPrice, subCategory, user, true);
 
         advertisementRepository.save(newAdvertisement);
         return getAdvertisement(newAdvertisement);
